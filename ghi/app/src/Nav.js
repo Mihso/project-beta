@@ -13,6 +13,7 @@ function Nav() {
           <NavLink className="navbar-brand" to="ManuList">Manufacturers</NavLink>
         <NavLink className="navbar-brand" to="ManuForm">Create Manufacturers</NavLink>
         <NavLink className="navbar-brand" to="AutoList">Automobiles</NavLink>
+        <NavLink className="navbar-brand" to="AutoForm">Create Automobiles</NavLink>
           </ul>
         </div>
       </div>
