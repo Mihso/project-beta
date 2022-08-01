@@ -25,15 +25,12 @@ class ManufacturerList extends React.Component {
       <>
         <div className="px-4 py-5 my-5 mt-0 text-center bg-info">
           <img className="bg-white rounded shadow d-block mx-auto mb-4" src="/logo.svg" alt="" width="600" />
-          <h1 className="display-5 fw-bold">Hats</h1>
+          <h1 className="display-5 fw-bold">Manufacturers</h1>
           <div className="col-lg-6 mx-auto">
-            <p className="lead mb-4">
-            Lots of hats, look at these hats, you want the hats.
-            </p>
           </div>
         </div>
         <div className="container">
-          <h2>Hat selection and destruction.</h2>
+          <h2>Manufacturers.</h2>
           <div className="row gx-5 gy-3 row-cols-3">
             <table className="center">
                 <tbody>
