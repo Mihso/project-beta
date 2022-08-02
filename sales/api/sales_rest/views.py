@@ -39,7 +39,8 @@ class salesEncoder(ModelEncoder):
         "price",
         "auto",
         "person",
-        "customer"
+        "customer",
+        "id"
     ]
     encoders ={
         'auto': AutoMobileEncoder(),
@@ -59,7 +60,7 @@ def salesList(request):
         content = json.loads(request.body)
         try:
             auto = content["auto"]
-            result =AutomobileVO.objects.get(id=auto)
+            result =AutomobileVO.objects.get(vin=auto)
             content["auto"] = result
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
