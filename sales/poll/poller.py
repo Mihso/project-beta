@@ -20,6 +20,7 @@ def get_locations():
         AutomobileVO.objects.update_or_create(
             id = automobile['id'],
             vin = automobile["vin"],
+            sold = automobile['sold'],
 
         )
 

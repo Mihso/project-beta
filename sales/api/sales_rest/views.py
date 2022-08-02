@@ -27,6 +27,7 @@ class customerEncoder(ModelEncoder):
     model = customer
     properties = [
         "name",
+        "id",
         "address",
         "phoneNumber",
     ]
@@ -34,12 +35,15 @@ class customerEncoder(ModelEncoder):
 class salesEncoder(ModelEncoder):
     model = sales
     properties= [
-        "price"
+        "price",
+        "auto",
+        "person",
+        "customer"
     ]
     encoders ={
         'auto': AutoMobileEncoder(),
-        # 'person': SalePersonEncoder(),
-        # 'customer': customerEncoder(),
+        'person': SalePersonEncoder(),
+        'customer': customerEncoder(),
     }
 
 @require_http_methods(["GET", "POST", "DELETE"])
@@ -63,7 +67,7 @@ def salesList(request):
             )
         try:
             person = content["person"]
-            result =salesPerson.objects.get(id=person)
+            result =salesPerson.objects.get(employeeNumber=person)
             content["person"] = result
         except salesPerson.DoesNotExist:
             return JsonResponse(
@@ -89,4 +93,48 @@ def salesList(request):
 def sales_delete(request, pk):
     if request.method == "DELETE":
         count, _ = sales.objects.all().delete()
+        return JsonResponse({"deleted": count > 0})
+
+@require_http_methods(["GET", "POST", "DELETE"])
+def customerList(request):
+    if request.method == "GET":
+        cust = customer.objects.all()
+        return JsonResponse(
+            {"customers": cust},
+            encoder = customerEncoder,
+        )
+    else:
+        content = json.loads(request.body)
+        shoe = customer.objects.create(**content)
+        return JsonResponse(
+            shoe,
+            encoder=customerEncoder,
+            safe=False,
+        )
+@require_http_methods(["DELETE", 'GET'])
+def customer_delete(request, pk):
+    if request.method == "DELETE":
+        count, _ = customer.objects.all().delete()
+        return JsonResponse({"deleted": count > 0})
+
+@require_http_methods(["GET", "POST", "DELETE"])
+def salesPersonList(request):
+    if request.method == "GET":
+        SP = salesPerson.objects.all()
+        return JsonResponse(
+            {"salesPeople": SP},
+            encoder = SalePersonEncoder,
+        )
+    else:
+        content = json.loads(request.body)
+        shoe = salesPerson.objects.create(**content)
+        return JsonResponse(
+            shoe,
+            encoder=SalePersonEncoder,
+            safe=False,
+        )
+@require_http_methods(["DELETE", 'GET'])
+def customer_delete(request, pk):
+    if request.method == "DELETE":
+        count, _ = salesPerson.objects.all().delete()
         return JsonResponse({"deleted": count > 0})
