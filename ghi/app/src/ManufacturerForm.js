@@ -14,9 +14,8 @@ constructor(props){
 async handleSubmit(event){
     event.preventDefault();
     const data = {...this.state};
-    delete data.locations;
 
-    const hatUrl = 'http://localhost:8100/api/manufacturers/';
+    const ManufacturerUrl = 'http://localhost:8100/api/manufacturers/';
     const fetchConfig = {
         method: "post",
         body: JSON.stringify(data),
@@ -24,9 +23,8 @@ async handleSubmit(event){
             'Content-Type': 'application/json',
         },
         };
-        const response = await fetch(hatUrl, fetchConfig);
+        const response = await fetch(ManufacturerUrl, fetchConfig);
         if (response.ok) {
-            const newHat = await response.json();
             const cleared = {
                 name: '',
               };

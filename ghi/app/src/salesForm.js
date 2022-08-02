@@ -29,7 +29,6 @@ async handleSubmit(event){
     const soldAuto = await fetch(soldAutoUrl);
     const autoDetails = await soldAuto.json();
     autoDetails.sold = true;
-    console.log(autoDetails)
     const fetchSoldConfig = {
         method: "put",
         body: JSON.stringify(autoDetails),
@@ -125,7 +124,7 @@ async componentDidMount(){
         <div className="col">
           <div className="card shadow">
             <div className="card-body">
-            <form onSubmit={this.handleSubmit} id="create-hat-form">
+            <form onSubmit={this.handleSubmit} id="create-sales-form">
                 <h1 className='card-title'>Record a Sale</h1>
                 <p className='mb-3'>
                     Submit a sale.

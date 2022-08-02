@@ -20,7 +20,7 @@ async handleSubmit(event){
     event.preventDefault();
     const data = {...this.state};
 
-    const hatUrl = 'http://localhost:8090/api/customers/';
+    const customerUrl = 'http://localhost:8090/api/customers/';
     const fetchConfig = {
         method: "post",
         body: JSON.stringify(data),
@@ -28,7 +28,7 @@ async handleSubmit(event){
             'Content-Type': 'application/json',
         },
         };
-        const response = await fetch(hatUrl, fetchConfig);
+        const response = await fetch(customerUrl, fetchConfig);
         if (response.ok) {
             const newHat = await response.json();
             const cleared = {
@@ -64,7 +64,7 @@ async componentDidMount(){
         <div className="col">
           <div className="card shadow">
             <div className="card-body">
-            <form onSubmit={this.handleSubmit} id="create-hat-form">
+            <form onSubmit={this.handleSubmit} id="create-customer-form">
                 <h1 className='card-title'>Add a customer</h1>
                 <p className='mb-3'>
 
@@ -90,7 +90,7 @@ async componentDidMount(){
                   <button className="btn btn-primary">Create</button>
                 </form> 
               <div className="alert alert-success d-none mb-0" id="success-message">
-                Successful Hire
+                Successful sucker
               </div>
             </div>
           </div>

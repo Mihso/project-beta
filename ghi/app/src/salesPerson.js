@@ -29,7 +29,6 @@ async handleSubmit(event){
         };
         const response = await fetch(hatUrl, fetchConfig);
         if (response.ok) {
-            const newHat = await response.json();
             const cleared = {
                 name: '',
                 employeeNumber: '',
@@ -87,7 +86,7 @@ async componentDidMount(){
         </div>
       </div>
     </div>
-        );
+    );
     }
 }
 

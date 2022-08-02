@@ -10,15 +10,15 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <NavLink className="navbar-brand" to="ManuList">Manufacturers</NavLink>
-        <NavLink className="navbar-brand" to="ManuForm">Create Manufacturers</NavLink>
-        <NavLink className="navbar-brand" to="AutoList">Automobiles</NavLink>
-        <NavLink className="navbar-brand" to="AutoForm">Create Automobiles</NavLink>
-        <NavLink className="navbar-brand" to="salesPersonForm">Hire Sales Person</NavLink>
-        <NavLink className="navbar-brand" to="customerForm">Add customer</NavLink>
-        <NavLink className="navbar-brand" to="salesForm">Input a sale</NavLink>
-        <NavLink className="navbar-brand" to="salesList">Sales</NavLink>
-        <NavLink className="navbar-brand" to="saleHistory">Sales History</NavLink>
+            <NavLink className="navbar-brand" to="ManuList">Manufacturers</NavLink>
+            <NavLink className="navbar-brand" to="ManuForm">Create Manufacturers</NavLink>
+            <NavLink className="navbar-brand" to="AutoList">Automobiles</NavLink>
+            <NavLink className="navbar-brand" to="AutoForm">Create Automobiles</NavLink>
+            <NavLink className="navbar-brand" to="salesPersonForm">Hire Sales Person</NavLink>
+            <NavLink className="navbar-brand" to="customerForm">Add customer</NavLink>
+            <NavLink className="navbar-brand" to="salesForm">Input a sale</NavLink>
+            <NavLink className="navbar-brand" to="salesList">Sales</NavLink>
+            <NavLink className="navbar-brand" to="saleHistory">Sales History</NavLink>
           </ul>
         </div>
       </div>
