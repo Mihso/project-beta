@@ -38,7 +38,8 @@ class salesEncoder(ModelEncoder):
         "price",
         "auto",
         "person",
-        "customer"
+        "customer",
+        "id"
     ]
     encoders ={
         'auto': AutoMobileEncoder(),

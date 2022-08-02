@@ -126,7 +126,7 @@ async componentDidMount(){
           <div className="card shadow">
             <div className="card-body">
             <form onSubmit={this.handleSubmit} id="create-hat-form">
-                <h1 className='card-title'>Create a Sale</h1>
+                <h1 className='card-title'>Record a Sale</h1>
                 <p className='mb-3'>
                     Submit a sale.
                 </p>

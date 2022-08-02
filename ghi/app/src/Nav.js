@@ -17,6 +17,7 @@ function Nav() {
         <NavLink className="navbar-brand" to="salesPersonForm">Hire Sales Person</NavLink>
         <NavLink className="navbar-brand" to="customerForm">Add customer</NavLink>
         <NavLink className="navbar-brand" to="salesForm">Input a sale</NavLink>
+        <NavLink className="navbar-brand" to="salesList">Sales</NavLink>
           </ul>
         </div>
       </div>
