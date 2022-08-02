@@ -1,3 +1,4 @@
+from urllib import response
 import django
 import os
 import sys
@@ -5,12 +6,23 @@ import time
 import json
 import requests
 
-sys.path.append("")
+sys.path.append(os.path.abspath('.../api'))
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "service_project.settings")
 django.setup()
 
 # Import models from service_rest, here.
+from service_rest.models import AutomobileVO
 # from service_rest.models import Something
+
+def get_locations():
+    response = requests.get("http://inventory-api:8000/api/automobiles/")
+    content = json.loads(response.content)
+    for automobile in content['autos']:
+        print(automobile)
+        AutomobileVO.objects.update_or_create(
+            id=automobile['id'],
+            vin = automobile['vin']
+        )
 
 def poll():
     while True:
