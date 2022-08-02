@@ -98,8 +98,7 @@ async componentDidMount(){
                 <thead>
                     <tr>
                         <th scope="col">Sale's Person</th>
-                        <th scope="col">Employee Number</th>
-                        <th scope="col">Purchaser</th>
+                        <th scope="col">Customer</th>
                         <th scope="col">Automobile VIN</th>
                         <th scope="col">Price of sale</th>
                     </tr>
@@ -110,7 +109,6 @@ async componentDidMount(){
               return (
                 <tr scope="row" key={sale.id}>
                 <td><p>{sale.person.name}</p></td>
-                <td><p>{sale.person.employeeNumber}</p></td>
                 <td><p>{sale.customer.name}</p></td>
                 <td><p>{sale.auto.vin}</p></td>
                 <td><p>${sale.price}</p></td>
