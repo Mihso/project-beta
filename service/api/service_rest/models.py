@@ -10,7 +10,7 @@ class Technician(models.Model):
     name = models.CharField(max_length=100)
     employeeNumber = models.PositiveBigIntegerField(unique = True)
 
-class ServiceAppointment(models.Model):
+class Service(models.Model):
     vin = models.PositiveIntegerField()
     owner = models.CharField(max_length=100)
     date = models.DateTimeField()
@@ -18,8 +18,9 @@ class ServiceAppointment(models.Model):
     reason = models.CharField(max_length=200)
 
 
-class ListAppointments(models.Model):
+class Appointments(models.Model):
     vin = models.PositiveIntegerField()
     owner = models.CharField(max_length=100)
     date = models.DateTimeField()
+    time = models.TimeField()
     technician = models.CharField()

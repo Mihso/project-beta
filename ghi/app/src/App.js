@@ -5,6 +5,8 @@ import ManufacturerList from './ManufacturerList';
 import ManufacturerForm from './ManufacturerForm';
 import AutomobileList from './automobileList';
 import AutomobileForm from './automobileForm';
+import SalesPersonForm from './salesPerson';
+import CustomerForm from './customer';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           <Route path="ManuForm" element= {<ManufacturerForm />}/>
           <Route path="AutoList" element= {<AutomobileList />}/>
           <Route path="AutoForm" element= {<AutomobileForm />}/>
+          <Route path="salesPersonForm" element= {<SalesPersonForm />}/>
+          <Route path="customerForm" element= {<CustomerForm />}/>
         </Routes>
       </div>
     </BrowserRouter>
