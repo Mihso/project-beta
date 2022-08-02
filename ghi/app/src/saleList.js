@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class SaleList extends React.Component {
   constructor(props) {
@@ -11,9 +10,9 @@ class SaleList extends React.Component {
 
   async componentDidMount() {
 
-    const hatsUrl = `http://localhost:8090/api/sales/`;
+    const salesUrl = `http://localhost:8090/api/sales/`;
 
-        const response = await fetch(hatsUrl);
+        const response = await fetch(salesUrl);
         if (response.ok) {
             const data = await response.json();
             this.setState({sales: data.sales})

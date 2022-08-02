@@ -11,9 +11,9 @@ class ManufacturerList extends React.Component {
 
   async componentDidMount() {
 
-    const hatsUrl = `http://localhost:8100/api/manufacturers/`;
+    const manufacturerUrl = `http://localhost:8100/api/manufacturers/`;
 
-        const response = await fetch(hatsUrl);
+        const response = await fetch(manufacturerUrl);
         if (response.ok) {
             const data = await response.json();
             this.setState({manufacturers: data.manufacturers})

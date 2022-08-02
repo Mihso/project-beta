@@ -11,9 +11,9 @@ class AutomobileList extends React.Component {
 
   async componentDidMount() {
 
-    const hatsUrl = `http://localhost:8100/api/automobiles/`;
+    const autoUrl = `http://localhost:8100/api/automobiles/`;
 
-        const response = await fetch(hatsUrl);
+        const response = await fetch(autoUrl);
         if (response.ok) {
             const data = await response.json();
             this.setState({manufacturers: data.autos})
@@ -25,12 +25,12 @@ class AutomobileList extends React.Component {
       <>
         <div className="px-4 py-5 my-5 mt-0 text-center bg-info">
           <img className="bg-white rounded shadow d-block mx-auto mb-4" src="/logo.svg" alt="" width="600" />
-          <h1 className="display-5 fw-bold">Manufacturers</h1>
+          <h1 className="display-5 fw-bold">Automobiles</h1>
           <div className="col-lg-6 mx-auto">
           </div>
         </div>
         <div className="container">
-          <h2>Manufacturers.</h2>
+          <h2>Our fine selection of automobiles</h2>
           <p> </p>
           <div className="row gx-5 gy-3 row-cols-3">
             <table className="center table">
@@ -45,7 +45,6 @@ class AutomobileList extends React.Component {
                 </thead>
                 <tbody>
             {this.state.manufacturers.map((manu) => {
-                console.log(manu);
               return (
                 <tr scope="row" key={manu.id}>
                 <td><p>{manu.vin}</p></td>
