@@ -16,9 +16,7 @@ def get_locations():
     response = requests.get("http://inventory-api:8000/api/automobiles/")
     content = json.loads(response.content)
     for automobile in content['autos']:
-        print(automobile)
         AutomobileVO.objects.update_or_create(
-            id = automobile['id'],
             vin = automobile["vin"],
             sold = automobile['sold'],
 
@@ -32,7 +30,7 @@ def poll():
             get_locations()
         except Exception as e:
             print(e, file=sys.stderr)
-        time.sleep(60)
+        time.sleep(30)
 
 
 if __name__ == "__main__":

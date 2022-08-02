@@ -12,7 +12,6 @@ import json
 class AutoMobileEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
-        "id",
         "vin",
         "sold",
     ]
