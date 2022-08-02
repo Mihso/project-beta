@@ -17,18 +17,21 @@ class customer(models.Model):
 
 class sales(models.Model):
     price = models.FloatField()
-    # auto = models.ForeignKey(
-    #     "AutomobileVO",
-    #     related_name="sales",
-    #     on_delete=models.CASCADE,
-    # )
-    # person = models.ForeignKey(
-    #     "salesPerson",
-    #     related_name="sales",
-    #     on_delete=models.CASCADE,
-    # )
-    # customer = models.ForeignKey(
-    #     "customer",
-    #     related_name="sales",
-    #     on_delete=models.CASCADE,
-    # )
+    auto = models.ForeignKey(
+        "AutomobileVO",
+        related_name="sales",
+        on_delete=models.CASCADE,
+        default=1,
+    )
+    person = models.ForeignKey(
+        "salesPerson",
+        related_name="sales",
+        on_delete=models.CASCADE,
+        default=1,
+    )
+    customer = models.ForeignKey(
+        "customer",
+        related_name="sales",
+        on_delete=models.CASCADE,
+        default=1,
+    )
