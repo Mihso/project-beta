@@ -1,6 +1,7 @@
-from django.urls import path 
-from .views import list_sales
+from django.urls import path
+from .views import salesList, sales_delete
 
 urlpatterns = [
-    path('sales/', list_sales, name="list_sales"),
+    path('sales/', salesList, name="list_sales"),
+    path('sales/<int:pk>/', sales_delete, name="delete_sales"),
 ]

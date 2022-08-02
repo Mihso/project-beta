@@ -43,11 +43,11 @@ class salesEncoder(ModelEncoder):
     # }
 
 @require_http_methods(["GET", "POST", "DELETE"])
-def list_sales(request):
+def salesList(request):
     if request.method == "GET":
-        sale = sales.objects.all()
+        salt = sales.objects.all()
         return JsonResponse(
-            {"sales": sale},
+            {"sales": salt},
             encoder = salesEncoder,
         )
     else:
@@ -85,3 +85,8 @@ def list_sales(request):
             encoder=salesEncoder,
             safe=False,
         )
+@require_http_methods(["DELETE", 'GET'])
+def sales_delete(request, pk):
+    if request.method == "DELETE":
+        count, _ = sales.objects.all().delete()
+        return JsonResponse({"deleted": count > 0})
