@@ -91,10 +91,10 @@ async componentDidMount(){
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.service.map((appointments) => {
+                                {this.state.appointment.map((appointments) => {
                                     console.log(appointments.automobile.vin)
                                     return (
-                                        <tr scope="row" key={sale.id}>
+                                        <tr scope="row" key={appointments.id}>
                                             <td><p>{appointments.automobile.vin}</p></td>
                                             <td><p>{appointments.customer.name}</p></td>
                                             <td><p>{appointments.date}</p></td>
@@ -103,8 +103,7 @@ async componentDidMount(){
                                             <td><p>{appointments.service.reason}</p></td>
                                         </tr>
                                     )
-                                }
-                                )}
+                                })}
                             </tbody>
                         </table>
                     </div>
@@ -113,6 +112,4 @@ async componentDidMount(){
         )
     }
 }
-
-
 export default ServiceHistoryForm

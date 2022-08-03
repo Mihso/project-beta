@@ -67,7 +67,6 @@ async componentDidMount(){
             <form onSubmit={this.handleSubmit} id="create-customer-form">
                 <h1 className='card-title'>Add a customer</h1>
                 <p className='mb-3'>
-
                 </p>
                 <div className="mb-3">
                   </div>
