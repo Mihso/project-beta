@@ -27,7 +27,7 @@ class customer(models.Model):
 
 class sales(models.Model):
     price = models.FloatField()
-    auto = models.ForeignKey(
+    auto = models.OneToOneField(
         "AutomobileVO",
         related_name="sales",
         on_delete=models.CASCADE,
