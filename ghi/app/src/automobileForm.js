@@ -74,15 +74,18 @@ async componentDidMount(){
 
     render(){
     return(
-    <div className="my-3 container">
+    <div className="my-2 container">
+        <div className="px-2 py-3 my-5 mt-0 rounded-pill text-center bg-success">
+          <h1 className="display-5 fw-bold">Create an Automobile</h1>
+          <div className="col-lg-6 mx-auto" />
+        </div>
       <div className="row">
         <div className="col">
           <div className="card shadow">
             <div className="card-body">
             <form onSubmit={this.handleSubmit} id="create-automobile-form">
-                <h1 className='card-title'>Create an Automobile</h1>
                 <p className='mb-3'>
-                    Make your dream automobile today?
+                    Make your dream automobile today.
                 </p>
                 <div className="mb-3">
                     <select onChange={this.handleModelChange} value={this.state.model} required id="model" name = "model" className="form-select">

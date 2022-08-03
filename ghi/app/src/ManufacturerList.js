@@ -39,7 +39,6 @@ class ManufacturerList extends React.Component {
                 </thead>
                 <tbody>
             {this.state.manufacturers.map((manu) => {
-                console.log(manu);
               return (
                 <tr key={manu.id}>
                 <td><p>{manu.name}</p></td>
