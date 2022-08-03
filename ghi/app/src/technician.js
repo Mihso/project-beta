@@ -84,7 +84,7 @@ return(
                 <button className="btn btn-success">Create</button>
             </form> 
             <div className="alert alert-success d-none mb-0" id="success-message">
-            Successful found a technician
+            Successfully found a technician
             </div>
         </div>
         </div>
