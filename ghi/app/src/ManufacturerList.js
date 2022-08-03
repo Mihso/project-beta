@@ -23,8 +23,7 @@ class ManufacturerList extends React.Component {
   render() {
     return (
       <>
-        <div className="px-4 py-5 my-5 mt-0 text-center bg-info">
-          <img className="bg-white rounded shadow d-block mx-auto mb-4" src="/logo.svg" alt="" width="600" />
+        <div className="px-2 py-3 my-5 mt-0 rounded-pill text-center bg-success">
           <h1 className="display-5 fw-bold">Manufacturers</h1>
           <div className="col-lg-6 mx-auto">
           </div>
@@ -32,7 +31,7 @@ class ManufacturerList extends React.Component {
         <div className="container">
           <h2>Manufacturers.</h2>
           <div className="row gx-5 gy-3 row-cols-3">
-            <table className="center table">
+            <table className="center table border border-5 border-success">
                 <thead>
                   <tr>
                     <th>Name</th>

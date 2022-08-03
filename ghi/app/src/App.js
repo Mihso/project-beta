@@ -15,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <div className="container">
+      <div className="container py-3">
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="ManuList" element= {<ManufacturerList />}/>

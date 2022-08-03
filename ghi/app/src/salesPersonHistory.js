@@ -62,7 +62,7 @@ async componentDidMount(){
 
     render(){
     return(
-    <div className="my-5 container">
+    <div className="my-3 container">
         <div className="row">
             <div className="col">
                 <div className="card shadow">
@@ -91,7 +91,7 @@ async componentDidMount(){
     <div className = 'row'>
         <div className = 'col'>
             <div className="row gx-5 gy-3 row-cols-3">
-                <table className="center table">
+                <table className="center border border-5 border-success table">
                     <thead>
                         <tr>
                             <th scope="col">Sale's Person</th>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 class AutomobileList extends React.Component {
   constructor(props) {
@@ -23,8 +22,7 @@ class AutomobileList extends React.Component {
   render() {
     return (
       <>
-        <div className="px-4 py-5 my-5 mt-0 text-center bg-info">
-          <img className="bg-white rounded shadow d-block mx-auto mb-4" src="/logo.svg" alt="" width="600" />
+        <div className="px-2 py-3 my-5 mt-0 rounded-pill text-center bg-success">
           <h1 className="display-5 fw-bold">Automobiles</h1>
           <div className="col-lg-6 mx-auto">
           </div>
@@ -33,7 +31,7 @@ class AutomobileList extends React.Component {
           <h2>Our fine selection of automobiles</h2>
           <p> </p>
           <div className="row gx-5 gy-3 row-cols-3">
-            <table className="center table">
+            <table className="center table border border-5 border-success">
                 <thead>
                     <tr>
                         <th scope="col">VIN</th>

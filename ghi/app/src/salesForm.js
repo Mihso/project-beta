@@ -119,7 +119,7 @@ async componentDidMount(){
 
     render(){
     return(
-    <div className="my-5 container">
+    <div className="my-3 container">
       <div className="row">
         <div className="col">
           <div className="card shadow">
@@ -173,7 +173,7 @@ async componentDidMount(){
                   </div>
                   </div>
                   </div>
-                  <button className="btn btn-primary">Create</button>
+                  <button className="btn btn-success">Create</button>
                 </form> 
               <div className="alert alert-success d-none mb-0" id="success-message">
                 Sale established.
