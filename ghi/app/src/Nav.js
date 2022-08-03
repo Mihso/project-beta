@@ -28,7 +28,7 @@ function Nav() {
           <NavLink className="dropdown-item" to="customerForm">Add customer</NavLink>
           <NavLink className="dropdown-item" to="salesForm">Input a sale</NavLink>
           <NavLink className="dropdown-item" to="salesList">Sales List</NavLink>
-          <NavLink className="dropdown-item" to="saleHistory">Sales History</NavLink>
+          <NavLink className="dropdown-item" to="saleHistory">Sales Person History</NavLink>
           </ul>
           </li>
           </ul>

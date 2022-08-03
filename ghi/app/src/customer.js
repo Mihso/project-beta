@@ -30,7 +30,6 @@ async handleSubmit(event){
         };
         const response = await fetch(customerUrl, fetchConfig);
         if (response.ok) {
-            const newHat = await response.json();
             const cleared = {
                 name: '',
                 address: '',
