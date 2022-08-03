@@ -108,7 +108,7 @@ async componentDidMount(){
                   </div>
                   <div className="form-floating mb-3">
                     <input onChange={this.handleVinChange} value={this.state.vin} required placeholder="Vin" type="text" name="vin" id="vin" className="form-control" />
-                    <label htmlFor="vin">VIN</label>
+                    <label htmlFor="vin">VIN (At most 17 characters)</label>
                   </div>
                   </div>
                   </div>

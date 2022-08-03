@@ -32,7 +32,12 @@ class ManufacturerList extends React.Component {
         <div className="container">
           <h2>Manufacturers.</h2>
           <div className="row gx-5 gy-3 row-cols-3">
-            <table className="center">
+            <table className="center table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                  </tr>
+                </thead>
                 <tbody>
             {this.state.manufacturers.map((manu) => {
                 console.log(manu);

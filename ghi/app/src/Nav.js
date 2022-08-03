@@ -10,17 +10,29 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
           <NavLink className="navbar-brand" to="ManuList">Manufacturers</NavLink>
+
           <NavLink className="navbar-brand" to="ManuForm">Create Manufacturers</NavLink>
+
           <NavLink className="navbar-brand" to="AutoList">Automobiles</NavLink>
+
           <NavLink className="navbar-brand" to="AutoForm">Create Automobiles</NavLink>
-          <NavLink className="navbar-brand" to="salesPersonForm">Hire Sales Person</NavLink>
-          <NavLink className="navbar-brand" to="customerForm">Add customer</NavLink>
-          <NavLink className="navbar-brand" to="salesForm">Input a sale</NavLink>
-          <NavLink className="navbar-brand" to="salesList">Sales</NavLink>
-          <NavLink className="navbar-brand" to="saleHistory">Sales History</NavLink>
+
+          <li className="nav-brand dropdown">
+            <a className="nav-link dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Sales
+            </a>
+          <ul className="dropdown-menu dropdown-menu-dark ">
+          <NavLink className="dropdown-item" to="salesPersonForm">Hire Sales Person</NavLink>
+          <NavLink className="dropdown-item" to="customerForm">Add customer</NavLink>
+          <NavLink className="dropdown-item" to="salesForm">Input a sale</NavLink>
+          <NavLink className="dropdown-item" to="salesList">Sales List</NavLink>
+          <NavLink className="dropdown-item" to="saleHistory">Sales History</NavLink>
           </ul>
-        </div>
+          </li>
+          </ul>
+          </div>
       </div>
     </nav>
   )
