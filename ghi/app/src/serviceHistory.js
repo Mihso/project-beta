@@ -19,29 +19,28 @@ constructor(props){
     super(props)
     this.state = {
         service: [],
-        appointment: [],
     }
     this.handleServiceChange = this.handleServiceChange.bind(this)
-    this.handleAppointmentChange = this.handleAppointmentChange.bind(this)
+    // this.handleAppointmentChange = this.handleAppointmentChange.bind(this)
 }
 
 handleServiceChange(event){
     const value = event.target.value
     this.setState({service: value})
 }
-handleAppointmentChange(event){
-    const value = event.target.value
-    this.setState({appointment: value})
-    updater(this)
-}
+// handleAppointmentChange(event){
+//     const value = event.target.value
+//     this.setState({appointment: value})
+//     updater(this)
+// }
 async componentDidMount(){
-    const appointmentsUrl = `http://localhost:8080/api/appointments/`
+    const serviceUrl = `http://localhost:8080/api/services/`
 
-    const appointmentsResponse = await fetch(appointmentsUrl)
+    const servicesResponse = await fetch(serviceUrl)
 
     if (appointmentsResponse.ok){
-        const data = await appointmentsResponse.json()
-            this.setState({appointments: data.appointment})
+        const data = await servicesResponse.json()
+            this.setState({services: data.services})
     }
     const servicesUrl = `http://localhost:8080/api/services/`
     
@@ -63,10 +62,10 @@ async componentDidMount(){
                         <div className="card-body">
                             <h1 className="card-title">Service appointments</h1>
                             <p className="mb-3">
-                                Submit an appointment.
+                                Search Previous Service Appointments.
                             </p>
                             <div className="mb-3">
-                                <select onChange={this.handleAppointmentChange} value={this.state.appointment} required id="appointment" name="appointment" className="form-select">
+                                <select onChange={this.handleServiceChange} value={this.state.service} required id="service" name="service" className="form-select">
                                     <input type="text" id="myInput" onKeyUp="myFunction()" placeholder='Search Using Vin'></input>
                                 </select>
                             </div>
@@ -91,16 +90,16 @@ async componentDidMount(){
                                 </tr>
                             </thead>
                             <tbody>
-                                {this.state.appointment.map((appointments) => {
-                                    console.log(appointments.automobile.vin)
+                                {this.state.service.map((services) => {
+                                    console.log(services.automobile.vin)
                                     return (
-                                        <tr scope="row" key={appointments.id}>
-                                            <td><p>{appointments.automobile.vin}</p></td>
-                                            <td><p>{appointments.customer.name}</p></td>
-                                            <td><p>{appointments.date}</p></td>
-                                            <td><p>{appointments.time}</p></td>
-                                            <td><p>{appointments.technician.name}</p></td>
-                                            <td><p>{appointments.service.reason}</p></td>
+                                        <tr scope="row" key={services.id}>
+                                            <td><p>{services.automobile.vin}</p></td>
+                                            <td><p>{services.customer.name}</p></td>
+                                            <td><p>{services.date}</p></td>
+                                            <td><p>{services.time}</p></td>
+                                            <td><p>{services.technician.name}</p></td>
+                                            <td><p>{services.reason}</p></td>
                                         </tr>
                                     )
                                 })}

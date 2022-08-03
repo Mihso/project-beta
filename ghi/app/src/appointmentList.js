@@ -1,21 +1,21 @@
 import React from 'react'
 
-class serviceList extends React.Component {
+class appointmentList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            service: [],
+            appointments: [],
 
         }
     }
     async componentDidMount() {
 
-        const serviceUrl = `http://localhost:8080/api/services/`
+        const appointmentsUrl = `http://localhost:8080/api/services/`
         
             const response = await fetch(serviceUrl)
             if (response.ok) {
                 const data = await response.json()
-                this.setState({services: data.services})
+                this.setState({appointments: data.appointments})
             }
     }
     
@@ -67,3 +67,5 @@ class serviceList extends React.Component {
 
 
 }
+
+export default appointmentList
