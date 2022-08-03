@@ -9,7 +9,7 @@ function Nav() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto mx-2 mb-2 mb-lg-0">
 
           <NavLink className="navbar-brand" to="ManuList">Manufacturers</NavLink>
 
@@ -19,11 +19,11 @@ function Nav() {
 
           <NavLink className="navbar-brand" to="AutoForm">Create Automobiles</NavLink>
 
-          <li className="nav-brand dropdown">
-            <a className="nav-link dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <li className="navbar-nav dropdown">
+            <a className="navbar-brand dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Sales
             </a>
-          <ul className="dropdown-menu dropdown-menu-dark ">
+          <ul className="dropdown-menu dropdown-menu-dark">
           <NavLink className="dropdown-item" to="salesPersonForm">Hire Sales Person</NavLink>
           <NavLink className="dropdown-item" to="customerForm">Add customer</NavLink>
           <NavLink className="dropdown-item" to="salesForm">Input a sale</NavLink>
