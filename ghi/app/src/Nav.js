@@ -33,12 +33,17 @@ function Nav() {
           </li>
           </ul>
           </div>
+          <li className="navbar-nav dropdown">
+            <a className="navbar-brand dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Services
+            </a>
           <ul className="dropdown-menu dropdown-menu-dark">
           <NavLink className="dropdown-item" to="technicianForm">Find a Technician</NavLink>
           <NavLink className="dropdown-item" to="serviceForm">Enter Service Appointment</NavLink>
           <NavLink className="dropdown-item" to="appointmentList">Appointments List</NavLink>
           <NavLink className="dropdown-item" to="serviceHistory">Service History</NavLink>
           </ul>
+          </li>
       </div>
     </nav>
   )

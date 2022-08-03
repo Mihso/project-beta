@@ -9,7 +9,7 @@ import json
 # Create your views here.
 class AutomobileEncoder(ModelEncoder):
     model = AutomobileVO
-    properties = ["id", "vin", "returning"]
+    properties = ["vin", "returning"]
 
 class TechnicianEncoder(ModelEncoder):
     model = Technician
