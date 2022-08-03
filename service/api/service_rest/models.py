@@ -23,4 +23,4 @@ class Appointments(models.Model):
     owner = models.CharField(max_length=100)
     date = models.DateTimeField()
     time = models.TimeField()
-    technician = models.CharField()
+    technician = models.CharField(max_length=100)
