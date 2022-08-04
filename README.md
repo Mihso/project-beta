@@ -19,9 +19,9 @@ Utilize polling to pull automobile inventory from inventory microservice.
 All models need some kind of association with Navbar
 
 Need to create salesPerson model.
--name
--employee number
-    -make each one unique
+- name
+- employee number
+    - make each one unique
 
 
 create potential customer model.
