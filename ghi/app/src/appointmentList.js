@@ -15,7 +15,7 @@ class AppointmentList extends React.Component {
             const response = await fetch(appointmentsUrl)
             if (response.ok) {
                 const data = await response.json()
-                this.setState({appointments: data.appointments})
+                this.setState({appointments: data.service})
             }
     }
     
