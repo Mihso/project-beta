@@ -15,7 +15,7 @@ import ServiceForm from './serviceForm';
 import ServiceHistoryForm from './serviceHistory';
 import VehicleList from './VehicleList';
 import VehicleForm from './VehicleForm';
-import AppointmentList from './AppointmentList';
+import AppointmentList from './appointmentList';
 
 function App() {
   return (

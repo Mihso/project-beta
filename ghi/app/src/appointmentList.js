@@ -10,7 +10,7 @@ class AppointmentList extends React.Component {
     }
     async componentDidMount() {
 
-        const appointmentsUrl = `http://localhost:8080/api/service/`
+        const appointmentsUrl = `http://localhost:8080/api/appointments/`
         
             const response = await fetch(appointmentsUrl)
             if (response.ok) {
