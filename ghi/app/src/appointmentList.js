@@ -1,6 +1,6 @@
 import React from 'react'
 
-class appointmentList extends React.Component {
+class AppointmentList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -43,29 +43,26 @@ class appointmentList extends React.Component {
                                     <th scope="col">Reason</th>
                                 </tr>
                             </thead>
-                        </table>
                         <tbody>
-                        {this.state.service.map((service) => {
-                            return (
-                                <tr scope="row" key={service.id}>
-                                <td><p>{service.auto.vin}</p></td>
-                                <td><p>{service.owner}</p></td>
-                                <td><p>{service.date}</p></td>
-                                <td><p>{service.time}</p></td>
-                                <td><p>{service.technician.name}</p></td>
-                                <td><p>{service.reason}</p></td>
-                                </tr>
-                            )
+                    {this.state.appointments.map((appointment) => {
+                        return (
+                        <tr scope="row" key={appointment.id}>
+                            <td><p>{appointment.auto.vin}</p></td>
+                            <td><p>{appointment.owner}</p></td>
+                            <td><p>{appointment.date}</p></td>
+                            <td><p>{appointment.time}</p></td>
+                            <td><p>{appointment.technician.name}</p></td>
+                            <td><p>{appointment.reason}</p></td>
+                        </tr>
+                        )
                         })}
                         </tbody>
+                        </table>
                     </div>
                 </div>
             </>
         )
     }
-
-
-
 }
 
-export default appointmentList
+export default AppointmentList

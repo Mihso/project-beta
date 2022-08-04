@@ -82,4 +82,38 @@ Use polling to retrieve inventory from inventory mircroservice
 
 Technician Model
 - name 
-- employee number 
+- employee number (unique=true)
+
+Service Appointment(added to navbar dropdown Services)
+- Appointment model
+- vin
+- owner
+- date brought in 
+- time brought in
+- reason
+(saves form)
+
+List of appointments(added to navbar as dropdown(services))
+-vin 
+-customer name(owner)
+- date
+- time 
+- technician 
+- reason
+- returning (VIP)
+
+service history(navbar service dropdown)
+-vin
+- customer name(owner)
+-date 
+- time
+-technician 
+-reason
+
+service views
+-encoders
+   - automobile
+   - technician 
+   -service
+   -appointment 
+   

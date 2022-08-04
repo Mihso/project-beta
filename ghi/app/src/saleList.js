@@ -22,7 +22,8 @@ class SaleList extends React.Component {
   render() {
     return (
       <>
-        <div className="px-2 py-3 my-5 mt-0 rounded-pill text-center bg-success">
+        <div className="px-2 py-3 my-5 mt-0 rounded-pill text-center bg-success"> 
+          <img className="bg-white rounded shadow d-block mx-auto mb-4" src="/logo.svg" alt="" width="600" />
           <h1 className="display-5 fw-bold">Sales</h1>
           <div className="col-lg-6 mx-auto">
           </div>
