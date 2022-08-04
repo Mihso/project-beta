@@ -19,7 +19,7 @@ async handleSubmit(event){
     const data = {...this.state}
     delete data.models
 
-    const technicianUrl = 'http://localhost:8080/api/technician/'
+    const technicianUrl = 'http://localhost:8080/api/technicianList/'
     const fetchConfig ={
         method: "post",
         body: JSON.stringify(data),
