@@ -35,8 +35,6 @@ function Nav() {
           <NavLink className="dropdown-item" to="saleHistory">Sales Person History</NavLink>
           </ul>
           </li>
-          </ul>
-          </div>
           <li className="navbar-nav dropdown">
             <a className="navbar-brand dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Services
@@ -48,6 +46,8 @@ function Nav() {
           <NavLink className="dropdown-item" to="serviceHistory">Service History</NavLink>
           </ul>
           </li>
+          </ul>
+          </div>
       </div>
     </nav>
   )

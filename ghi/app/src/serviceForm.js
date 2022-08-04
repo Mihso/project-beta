@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 class ServiceForm extends React.Component {
 constructor(props){
     super(props)
@@ -126,11 +127,11 @@ handleReasonChange(event){
                             <label htmlFor="address">Owner</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={this.handleDateChange} value={this.state.date} required placeholder="Date" type="number" name="date" id="date" className="form-control" />
-                            <label htmlFor="date">Date</label>
+                            <input type="date" required placeholder="Date" name="date-brought-in" id="brought-in" min="2022-08-01" max="3000-12-31 "className="form-control" />
+                            <label htmlFor="date">Date Brought in</label>
                         <div className="form-floating mb-3">
-                            <input onChange={this.handleTimeChange} value={this.state.time} required placeholder='Time' type="number" name="time" id="time" className="form-control" />
-                            <label htmlFor="time">Time</label>
+                            <input onChange={(ev) => {this.setState({time:ev.target.value})}} required placeholder='Time' type="time" step="1" value={this.state.time} name="time-brought-in" id="time-brought-in" className="form-control" />
+                            <label htmlFor="time">Time Brought In</label>
                         <div className="form-floating mb-3">
                             <input onChange={this.handleTechnicianChange} value={this.state.technician} required placeholder='Technician' type="text" name="technician" id="technician" className="form-control"/>
                             <label htmlFor='technician'>Technician</label>
