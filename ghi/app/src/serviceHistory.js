@@ -1,7 +1,7 @@
 import React from 'react'
 
 async function updater(props){
-    const serviceUrl = `http://localhost:8080/api/services/`
+    const serviceUrl = `http://localhost:8080/api/service/`
 
     const serviceResponse = await fetch(serviceUrl)
     
@@ -21,94 +21,82 @@ constructor(props){
         service: [],
     }
     this.handleServiceChange = this.handleServiceChange.bind(this)
-    // this.handleAppointmentChange = this.handleAppointmentChange.bind(this)
 }
 
 handleServiceChange(event){
     const value = event.target.value
     this.setState({service: value})
 }
-// handleAppointmentChange(event){
-//     const value = event.target.value
-//     this.setState({appointment: value})
-//     updater(this)
-// }
+
 async componentDidMount(){
-    const serviceUrl = `http://localhost:8080/api/services/`
-
-    const servicesResponse = await fetch(serviceUrl)
-
-    if (appointmentsResponse.ok){
-        const data = await servicesResponse.json()
-            this.setState({services: data.services})
-    }
-    const servicesUrl = `http://localhost:8080/api/services/`
-    
-    const serviceResponse = await fetch(servicesUrl)
+    const serviceUrl = 'http://localhost:8080/api/service/'
+    const serviceResponse = await fetch(serviceUrl)
 
     if (serviceResponse.ok) {
         const data = await serviceResponse.json()
-        const after = data.services.filter(sale => {return service.automobile.vin = this.state.automobile})
+        const after = data.services.filter(service=> {return service.vin = this.state.vin})
         this.setState({services: after})
+
     }
-            
 }
+
     render(){
-    return (
-    <><div className="my-5 container">
-            <div className="row">
-                <div className="col">
-                    <div className="card shadow">
-                        <div className="card-body">
-                            <h1 className="card-title">Service appointments</h1>
-                            <p className="mb-3">
-                                Search Previous Service Appointments.
-                            </p>
-                            <div className="mb-3">
-                                <select onChange={this.handleServiceChange} value={this.state.service} required id="service" name="service" className="form-select">
-                                    <input type="text" id="myInput" onKeyUp="myFunction()" placeholder='Search Using Vin'></input>
-                                </select>
-                            </div>
-                        </div>
+    return(
+    <>
+    <div className="my-2 container">
+        <div className="px-2 py-3 my-5 mt-0 rounded-pill text-center bg-success">
+            <h1 className="display-5 fw-bold">Service History</h1>
+            <div className="col-lg-6 mx-auto" />
+        </div>
+        <div className="row">
+            <div className="col">
+                <div className="card-shadow">
+                <div className="card-body">
+                    <div className="topnav">
+                        <input type="text" placeholder="Search Vin"></input>
                     </div>
+                    </div>    
                 </div>
             </div>
         </div>
-        <p>  </p>
-        <div className='row'>
-                <div className='col'>
-                    <div className="row gx-5 gy-3 row-cols-3">
-                        <table className="center table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">VIN</th>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Technician</th>
-                                    <th scope="col">Reason</th>
+    </div>
+    <p> </p>
+    <div className="row">
+        <div className = "col">
+            <div className="row gx-5 gy-3 rows-cols-3">
+                <table className="center border border-5 border-success table">
+                    <thead>
+                        <tr>
+                            <th scope="col">VIN</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Technician</th>
+                            <th scope="col">Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.service.map((service) => {
+                            console.log(service.vin)
+                            return (
+                                <tr scope="row" key={service.id}>
+                                    <td><p>{service.auto.vin}</p></td>
+                                    <td><p>{service.owner}</p></td>
+                                    <td><p>{service.date}</p></td>
+                                    <td><p>{service.time}</p></td>
+                                    <td><p>{service.technician}</p></td>
+                                    <td><p>{service.reason}</p></td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {this.state.service.map((services) => {
-                                    console.log(services.automobile.vin)
-                                    return (
-                                        <tr scope="row" key={services.id}>
-                                            <td><p>{services.automobile.vin}</p></td>
-                                            <td><p>{services.customer.name}</p></td>
-                                            <td><p>{services.date}</p></td>
-                                            <td><p>{services.time}</p></td>
-                                            <td><p>{services.technician.name}</p></td>
-                                            <td><p>{services.reason}</p></td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div></>
-        )
+                            )
+                        })}
+                    </tbody>
+                </table>     
+            </div>
+        </div>
+    </div>
+    </>
+    )
     }
 }
+
 export default ServiceHistoryForm

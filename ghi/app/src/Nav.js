@@ -38,7 +38,7 @@ function Nav() {
               Services
             </a>
           <ul className="dropdown-menu dropdown-menu-dark">
-          <NavLink className="dropdown-item" to="technicianForm">Find a Technician</NavLink>
+          <NavLink className="dropdown-item" to="technician">Find a Technician</NavLink>
           <NavLink className="dropdown-item" to="serviceForm">Enter Service Appointment</NavLink>
           <NavLink className="dropdown-item" to="appointmentList">Appointments List</NavLink>
           <NavLink className="dropdown-item" to="serviceHistory">Service History</NavLink>

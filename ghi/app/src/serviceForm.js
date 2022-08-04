@@ -5,20 +5,20 @@ constructor(props){
     super(props)
     this.state = {
         vin: '',
-        owner: '',
+        owner: [],
         date: '',
         time: '',
-        technician: '',
+        technician: [],
         reason: '',
+    
     }
-
     this.handleVinChange = this.handleVinChange.bind(this)
     this.handleOwnerChange = this.handleOwnerChange.bind(this)
     this.handleDateChange = this.handleDateChange.bind(this)
     this.handleTimeChange = this.handleTimeChange.bind(this)
     this.handleTechnicianChange = this.handleTechnicianChange.bind(this)
     this.handleReasonChange = this.handleReasonChange.bind(this)
-    this.handleSubmit = this.handleSubmitChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
 
 }
 
@@ -26,27 +26,53 @@ async handleSubmit(event){
     event.preventDefault()
     const data = {...this.state}
 
-    const serviceUrl = `http://localhost:8080/api/services/`
-    const fetchConfig = {
+    const returningOwnerUrl = `http://localhost:8080/api/service/${data.auto}`
+    const returningOwner = await fetch(returningOwnerUrl)
+    const autoDetails = await returningOwner.json()
+    autoDetails.returning = true
+    const fetchReturningConfig = {
         method: "post",
-        body: JSON.stringify(data),
+        body: JSON.stringify(autoDetails),
         headers: {
             'Content-Type': 'application/json'
     }
     }
-    const response = await fetch(serviceUrl, fetchConfig)
-    if (response.ok) {
-        const newService = await response.json()
-        const cleared = {
-            vin: '',
-            owner: '',
-            date: '',
-            time: '',
-            technician: '',
-            reason: '',
-        }
-        this.setState(cleared)
+
+    const returningResponse = await fetch(returningOwnerUrl, fetchReturningConfig)
+    if (returningResponse.ok) {
+        console.log("welcome back")
     }
+
+const serviceUrl = 'http://localhost:8080/api/service/'
+const fetchConfig = {
+    method: "post",
+    body: JSON.stringify(data),
+    headers: {
+        'Content-Type': 'application/json'
+}
+}
+const response = await fetch(serviceUrl, fetchConfig)
+if (response.ok) {
+    const cleared ={
+        vin: '',
+        owner: '',
+        technician: '',
+        date: '',
+        time: '',
+        reason: '',
+    }
+    this.setState(cleared)
+}
+const autoUrl = 'http://localhost:8100/api/automobiles'
+
+const autoResponse = await fetch(autoUrl)
+
+if (autoResponse.ok) {
+    const data = await autoResponse.json()
+    const returningOwner = data.autos.filter(auto => {return auto.returning === false})
+    this.setState({autos: returningOwner})
+}
+
 
 }
 handleVinChange(event){

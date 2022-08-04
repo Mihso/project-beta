@@ -10,9 +10,9 @@ class appointmentList extends React.Component {
     }
     async componentDidMount() {
 
-        const appointmentsUrl = `http://localhost:8080/api/services/`
+        const appointmentsUrl = `http://localhost:8080/api/service/`
         
-            const response = await fetch(serviceUrl)
+            const response = await fetch(appointmentsUrl)
             if (response.ok) {
                 const data = await response.json()
                 this.setState({appointments: data.appointments})
