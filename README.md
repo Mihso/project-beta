@@ -75,6 +75,7 @@ Forms/lists:
     - don't need to pull from other objects.
 - sales person form:
     - don't need to pull from other objects. 
+
 might want to create separate page with all sales-based links so Nav bar isn't so cluttered.
   - implemented dropdown menu with with all sales related information using bootstrap.
 
