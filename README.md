@@ -119,4 +119,4 @@ service views
    - technician 
    -service
    -appointment 
-   
+-service list(get, post, delete)
