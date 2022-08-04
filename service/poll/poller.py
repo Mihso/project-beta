@@ -5,8 +5,9 @@ import sys
 import time
 import json
 import requests
+from sales.poll.poller import get_automobiles
 
-sys.path.append(os.path.abspath('.../api'))
+sys.path.append("")
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "service_project.settings")
 django.setup()
 
@@ -29,6 +30,7 @@ def poll():
         print('Service poller polling for data')
         try:
             # Write your polling logic, here
+            get_automobiles()
             pass
         except Exception as e:
             print(e, file=sys.stderr)
