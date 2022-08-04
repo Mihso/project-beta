@@ -2,6 +2,7 @@ import React from 'react'
 
 class VehicleForm extends React.Component {
     constructor(props){
+        super(props);
     this.state= {
         name:'',}
     this.handleNameChange = this.handleNameChange.bind(this)
