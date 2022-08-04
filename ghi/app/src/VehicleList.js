@@ -14,7 +14,7 @@ class VehicleList extends React.Component {
         const response = await fetch(vehicleUrl)
         if (response.ok) {
             const data = await response.json()
-            this.setState.apply({vehicles: data.vehicles})
+            this.setState({vehicles: data.models})
         }
     }
 
@@ -33,13 +33,21 @@ class VehicleList extends React.Component {
             <div className="container">
                 <h2>Vehicles, Vehicles, and more Vehicles</h2>
                 <div className="row gx-5 gy-3 row-cols-3">
-                    <table className="center">
+                    <table className="center table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Manufacturer</th>
+                                <th scope="col">Picture</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             {this.state.vehicles.map((vehicle) => {
-                                console.log(vehicle)
                             return (
                                 <tr key={vehicle.id}>
                                 <td><p>{vehicle.name}</p></td>
+                                <td><p>{vehicle.manufacturer.name}</p></td>
+                                <td><img src={vehicle.picture_url} className="card-img-top" /></td>
                             </tr>
                             )
                         })}

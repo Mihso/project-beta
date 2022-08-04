@@ -19,7 +19,7 @@ async handleSubmit(event){
     const data = {...this.state};
     delete data.models;
 
-    const hatUrl = 'http://localhost:8090/api/salesPerson/';
+    const salesPersonUrl = 'http://localhost:8090/api/salesPerson/';
     const fetchConfig = {
         method: "post",
         body: JSON.stringify(data),
@@ -27,7 +27,7 @@ async handleSubmit(event){
             'Content-Type': 'application/json',
         },
         };
-        const response = await fetch(hatUrl, fetchConfig);
+        const response = await fetch(salesPersonUrl, fetchConfig);
         if (response.ok) {
             const cleared = {
                 name: '',
