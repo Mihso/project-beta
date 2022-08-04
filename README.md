@@ -64,17 +64,18 @@ Forms/lists:
             -use .filter() to check
         -use "put" command to set sold variable of selected automobile to true once sales form is submitted.
         -get sales person objects.
-            -pull from http://localhost:8090/api/salesPerson/
             -use employee number as key
         -get customer objects.
-            - pull from http://localhost:8090/api/customers/
             -use customer id as key
         -get automobile objects.
-            -pull from http://localhost:8100/api/automobiles/
             -use VIN as key
     -customer form:
         -don't need to pull from other objects.
     -sales person form:
         -don't need to pull from other objects. 
-might want to create separate page with all sales-based links so Nav bar isn't so cluttered.
-    -ended up implementing a dropdown menu with all sales related links.
+might want to create separate page with all sales-based links so Nav bar isn't so cluttered.33
+
+
+## Service Microservice
+
+    
