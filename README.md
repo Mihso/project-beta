@@ -78,4 +78,8 @@ might want to create separate page with all sales-based links so Nav bar isn't s
 
 ## Service Microservice
 
-    
+Use polling to retrieve inventory from inventory mircroservice 
+
+Technician Model
+- name 
+- employee number 
