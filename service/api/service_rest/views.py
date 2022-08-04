@@ -46,10 +46,10 @@ class AppointmentsEncoder(ModelEncoder):
 @require_http_methods(["GET", "POST", "DELETE"])
 def serviceList(request):
     if request.method == "GET":
-        serv = service.objects.all()
+        serv = Service.objects.all()
         return JsonResponse(
             {"services": serv},
-            encoder = ServiceEncoder
+            encoder = ServiceEncoder,
         )
     else:
         content = json.loads(request.body)

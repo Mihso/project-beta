@@ -3,7 +3,7 @@ from django.urls import reverse
 # Create your models here.
 
 class AutomobileVO(models.Model):
-    vin = models.PositiveIntegerField()
+    vin = models.TextField()
     returning = models.BooleanField(null=False, default= False)
 
     def get_api_url(self):
@@ -19,7 +19,7 @@ class Technician(models.Model):
 
 
 class Appointments(models.Model):
-    vin = models.PositiveIntegerField()
+    vin = models.TextField()
     owner = models.CharField(max_length=100)
     date = models.DateTimeField()
     time = models.TimeField()
@@ -31,7 +31,7 @@ class Appointments(models.Model):
 
 
 class Service(models.Model):
-    vin = models.PositiveIntegerField()
+    vin = models.TextField()
     owner = models.CharField(max_length=100)
     date = models.DateTimeField()
     technician = models.CharField(max_length=100)
