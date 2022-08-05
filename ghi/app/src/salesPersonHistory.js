@@ -8,7 +8,6 @@ async function updater(props){
     if (salesResponse.ok) {
         const data = await salesResponse.json();
         const after = data.sales.filter(sale => {
-            console.log(sale)
             return sale.person.employeeNumber == props.state.person})
         props.setState({sales: after});
     }
@@ -80,7 +79,7 @@ async componentDidMount(){
                             {this.state.persons.map(person => {
                             return(
                                 <option key={person.employeeNumber} value={[person.employeeNumber]}>
-                                    {person.employeeNumber}
+                                    {person.name}
                                 </option>  
                             );
                         })}
