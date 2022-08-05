@@ -11,13 +11,24 @@ function getTime(props){
     return `${convert.getUTCHours()}:${convert.getUTCMinutes()}`
 }
 
+async function updater(props){
+    const appointmentsUrl = 'http://localhost:8080/api/appointments/';
+
+    const appointmentsResponse = await fetch(appointmentsUrl);
+    
+    if (appointmentsResponse.ok) {
+        const data = await appointmentsResponse.json();
+        props.setState({appointments: data.appointments});
+    } 
+}
+
 class AppointmentList extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             appointments: [],
-
         }
+        this.deleteAppointment = this.deleteAppointment.bind(this);
     }
     async componentDidMount() {
 
@@ -29,6 +40,7 @@ class AppointmentList extends React.Component {
                 this.setState({appointments: data.appointments})
             }
     }
+
 deleteAppointment(props){
     const technicianUrl = `http://localhost:8080/api/appointments/${props}/`
     const fetchConfig ={
@@ -38,6 +50,17 @@ deleteAppointment(props){
     }
     }
     const response = fetch(technicianUrl, fetchConfig)
+
+    const appointmentsUrl = 'http://localhost:8080/api/appointments/';
+
+    const appointmentsResponse = fetch(appointmentsUrl);
+    
+    if (appointmentsResponse.ok) {
+        const data = appointmentsResponse.json();
+        console.log(data)
+        this.setState({appointments: data.appointments});
+    } 
+
 }
 
     render () {
@@ -74,7 +97,10 @@ deleteAppointment(props){
                                 <td><p>{appointment.technician.name}</p></td>
                                 <td><p>{appointment.reason}</p></td>
                                 <td>
+<<<<<<< HEAD
                                 
+=======
+>>>>>>> d40ba4541980dfa82e79a0c6dd1a61850800e052
                                 <td><button type="button" onClick={() => this.deleteAppointment(appointment.id)} className="btn btn-danger">Cancel</button></td>
                                 <td><button type="button" onClick={()=> this.deleteAppointment(appointment.id)} className="btn btn-primary">Finished</button></td>
                                 <div className="alert alert-success d-none mb-0" id="success-message">
