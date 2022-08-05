@@ -27,6 +27,7 @@ create potential customer model.
 - name
 - address
 - phone number
+- id (automatically created)
 
 create automobileVO model:
 - true or false if sold
@@ -37,12 +38,19 @@ create automobileVO model:
 
 create a sales model
   - price of sale
+    - make it a float so it includes cents
   - one to one relationship with automobile
   - one to many relationship with customer
   - one to many relationship with salesPerson
 
 Views.py:
 - create encoder for each model.
+- sales encoder includes code to get specific customer, automobileVO, and Salesperson.
+  - include customer, automobile, and Salesperson encoders.
+    - customer: let customer ID be input into sales.
+    - Saleperson: let employee number be input into sales.
+    - automobileVO: let vin be input into sales
+
 - set up sales list and sales delete functions.
     - sales list do GET and POST 
     - delete do DELETE, PUT, and GET for individual sales
@@ -77,8 +85,14 @@ Forms/lists:
 
 - customer form:
     - don't need to pull from other objects.
+    - input for name, address, and phone number
+      - make sure it sends right format as input
+
 - sales person form:
-    - don't need to pull from other objects. 
+    - don't need to pull from other objects.
+    - input for name and employee number
+      - make sure it sends right format as input
+
 
 might want to create separate page with all sales-based links so Nav bar isn't so cluttered.
   - implemented dropdown menu with with all sales related information using bootstrap.
