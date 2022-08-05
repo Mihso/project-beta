@@ -26,6 +26,7 @@ constructor(props){
 async handleSubmit(event){
     event.preventDefault()
     const data = {...this.state}
+    delete data.technicians
 
     const returningOwnerUrl = `http://localhost:8100/api/automobiles/${data.auto}`
     const returningOwner = await fetch(returningOwnerUrl)

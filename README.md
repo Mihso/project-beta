@@ -51,6 +51,10 @@ Views.py:
 - customer, sales person, and automobileVO more straight forward.
     - make PUT, GET, POST, DELETE for each so can test in Insomnia
 
+    - include ID variable in customer encoder so customer ID can be retrieved.
+    - mainly use ["DELETE","POST","GET"] for delete functionality, so name function after delete function
+
+
 Forms/lists:
 - Sales Person sale history:
     - filter sales list based on employee number of currently selected sales person.

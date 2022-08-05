@@ -8,7 +8,6 @@ async function updater(props){
     if (serviceResponse.ok) {
         const data = await serviceResponse.json()
         const after = data.services.filter(service => {
-            console.log(service)
             return service.automobile.vin == props.state.automobile})
         props.setState({service: after})
         } 
@@ -34,7 +33,8 @@ async componentDidMount(){
 
     if (serviceResponse.ok) {
         const data = await serviceResponse.json()
-        const after = data.services.filter(service=> {return service.vin = this.state.vin})
+        console.log(data)
+        const after = data.service.filter(service=> {return service.vin = this.state.vin})
         this.setState({services: after})
 
     }

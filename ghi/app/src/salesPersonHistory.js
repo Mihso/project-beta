@@ -104,7 +104,6 @@ async componentDidMount(){
                     </thead>
                     <tbody>
                         {this.state.sales.map((sale) => {
-                            console.log(sale.person.employeeNumber)
                             return (
                                 <tr scope="row" key={sale.id}>
                                     <td><p>{sale.person.name}</p></td>
