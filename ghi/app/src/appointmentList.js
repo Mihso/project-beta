@@ -53,7 +53,9 @@ class AppointmentList extends React.Component {
                             <td><p>{appointment.time}</p></td>
                             <td><p>{appointment.technician.name}</p></td>
                             <td><p>{appointment.reason}</p></td>
+                            <td>
                             <button className="btn btn-primary">Finished</button>
+                            </td>
                         </tr>
                         )
                         })}

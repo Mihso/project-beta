@@ -32,7 +32,9 @@ class AppointmentsEncoder(ModelEncoder):
     properties =[
         "owner",
         "date",
-        "time",
+        "auto",
+        "id",
+        #"time",
         "technician",
         "reason",
     ]

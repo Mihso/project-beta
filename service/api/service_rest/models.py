@@ -22,7 +22,7 @@ class Appointments(models.Model):
     vin = models.TextField()
     owner = models.CharField(max_length=100)
     date = models.DateTimeField()
-    time = models.TimeField()
+    #time = models.TimeField()
     auto = models.OneToOneField(
         "AutomobileVO",
         related_name="services",

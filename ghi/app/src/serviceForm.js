@@ -9,7 +9,7 @@ constructor(props){
         owner: [],
         date: '',
         time: '',
-        technician: [],
+        technicians: [],
         reason: '',
     
     }
@@ -68,11 +68,11 @@ const autoUrl = 'http://localhost:8100/api/automobiles'
 
 const autoResponse = await fetch(autoUrl)
 
-if (autoResponse.ok) {
-    const data = await autoResponse.json()
-    const returningOwner = data.autos.filter(auto => {return auto.returning === false})
-    this.setState({autos: returningOwner})
-}
+// if (autoResponse.ok) {
+//     const data = await autoResponse.json()
+//     const returningOwner = data.autos.filter(auto => {return auto.returning === false})
+//     this.setState({autos: returningOwner})
+// }
 
 
 }
@@ -102,7 +102,16 @@ handleReasonChange(event){
     this.setState({reason: value})
 }
 
+async componentDidMount(){
+    const url = 'http://localhost:8080/api/technicianList/';
 
+    const response = await fetch(url);
+
+    if (response.ok) {
+      const data = await response.json();
+        this.setState({technicians: data.technician});
+      }
+    }
     
         render(){
         return(
@@ -131,15 +140,26 @@ handleReasonChange(event){
                         <div>
                             <label htmlFor="appointment-time">Choose a time for your appointment:</label>
                         </div>
-                            <input type="datetime-local" id="appointment-time" name="appointment-time" value="2022-08-01T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00"/>
+                            <input type="datetime-local" id="appointment-time" name="appointment-time" /*value="2022-08-01T19:30"*/ min="2018-06-07T00:00" max="2022-06-14T00:00"/>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={this.handleTechnicianChange} value={this.state.technician} required placeholder='Technician' type="text" name="technician" id="technician" className="form-control"/>
+                        <select onChange={this.handleTechnicianChange} value={this.state.technician} required id="technician" name = "technician" className="form-select">
+                            <option value="">Choose a technician</option>
+                            {this.state.technicians.map(technician => {
+                                return(
+                                <option key={technician.employeeNumber} value={technician.employeeNumber}>
+                                {technician.name}
+                                </option>  
+                            );
+                            })}
+                        </select>
+                        {/*    <input onChange={this.handleTechnicianChange} value={this.state.technician} required placeholder='Technician' type="text" name="technician" id="technician" className="form-control"/>
                             <label htmlFor='technician'>Technician</label>
-                        <div className="form-floating mb-3">
+                        */}
+                        </div>
+                            <div className="form-floating mb-3">
                             <input onChange={this.handleReasonChange} value={this.state.reason} required placeholder='Reason' type="text" name="reason" id="reason" className="form-control"/>
                             <label htmlFor='reason'>Reason</label>
-                        </div>
                         </div>
                         </div>
                         </div>
