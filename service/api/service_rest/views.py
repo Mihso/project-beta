@@ -23,7 +23,7 @@ class ServiceEncoder(ModelEncoder):
     properties = [
         "vin",
         "owner",
-        "date"
+        "date",
         "technician",
         "reason",
     ]
@@ -92,22 +92,22 @@ def serviceDelete(request, pk):
         count,= Service.objects.all().delete()
         return JsonResponse({"deleted": count > 0})
 
-# @require_http_methods(["GET", "POST", "DELETE"])
-# def appointmentList(request):
-#     if request.method=="GET":
-#         appt = Appointments.objects.all()
-#         return JsonResponse(
-#             {"service": appt},
-#             encoder = AppointmentsEncoder
-#         )
-#     else:
-#         content = json.loads(request.body)
-#         shoe = Appointments.objects.create(**content)
-#         return JsonResponse(
-#             appt,
-#             encoder =AppointmentsEncoder,
-#             safe=False,
-#         )
+@require_http_methods(["GET", "POST", "DELETE"])
+def serviceList(request):
+    if request.method=="GET":
+        service = Appointments.objects.all()
+        return JsonResponse(
+            {"service": service},
+            encoder = AppointmentsEncoder
+        )
+    else:
+        content = json.loads(request.body)
+        service = Service.objects.create(**content)
+        return JsonResponse(
+            service,
+            encoder =ServiceEncoder,
+            safe=False,
+        )
 
 @require_http_methods(["DELETE", "GET"])
 def appointmentDelete(request, pk):
