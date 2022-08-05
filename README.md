@@ -27,6 +27,7 @@ create potential customer model.
 - name
 - address
 - phone number
+- id(automatically created)
 
 create automobileVO model:
 - true or false if sold
@@ -37,19 +38,25 @@ create automobileVO model:
 
 create a sales model
   - price of sale
+    - have it be a float to include cents
   - one to one relationship with automobile
   - one to many relationship with customer
   - one to many relationship with salesPerson
 
 Views.py:
 - create encoder for each model.
+- sales encoder includes code to get specific customer, automobileVO, and Salesperson.
+  - include customer, automobile, and Salesperson encoders.
+    - customer: let customer ID be input into sales.
+    - Saleperson: let employee number be input into sales.
+    - automobileVO: let vin be input into sales
 - set up sales list and sales delete functions.
     - sales list do GET and POST 
     - delete do DELETE, PUT, and GET for individual sales
         - include delete for future testing.
-    - include automobileVO, customer, and sales person encoders as part sales encoder.
 - customer, sales person, and automobileVO more straight forward.
     - make PUT, GET, POST, DELETE for each so can test in Insomnia
+    - include ID variable in customer encoder so customer ID can be retrieved.
 
 Forms/lists:
 - Sales Person sale history:
@@ -73,8 +80,12 @@ Forms/lists:
 
 - customer form:
     - don't need to pull from other objects.
+    - input for name, address, and phone number
+      - make sure it sends right format as input
 - sales person form:
     - don't need to pull from other objects. 
+    - input for name and employee number
+      - make sure it sends right format as input
 
 might want to create separate page with all sales-based links so Nav bar isn't so cluttered.
   - implemented dropdown menu with with all sales related information using bootstrap.
