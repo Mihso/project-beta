@@ -95,10 +95,10 @@ def serviceDelete(request, pk):
 @require_http_methods(["GET", "POST", "DELETE"])
 def serviceList(request):
     if request.method=="GET":
-        service = Appointments.objects.all()
+        service = Service.objects.all()
         return JsonResponse(
             {"service": service},
-            encoder = AppointmentsEncoder
+            encoder = ServiceEncoder
         )
     else:
         content = json.loads(request.body)
@@ -112,7 +112,7 @@ def serviceList(request):
 @require_http_methods(["DELETE", "GET"])
 def appointmentDelete(request, pk):
     if request.method =="DELETE":
-        count, _= Appointments.objects.all().deleted()
+        count, _= Appointments.objects.filter(id=pk).delete()
         return JsonResponse({"deleted": count >0})
 
 @require_http_methods(["GET", "POST", "DELETE"])

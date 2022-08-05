@@ -29,7 +29,16 @@ class AppointmentList extends React.Component {
                 this.setState({appointments: data.appointments})
             }
     }
-    
+deleteAppointment(props){
+    const technicianUrl = `http://localhost:8080/api/appointments/${props}/`
+    const fetchConfig ={
+        method: "delete",
+        headers: {
+            'Content-Type': 'application/json'
+    }
+    }
+    const response = fetch(technicianUrl, fetchConfig)
+}
 
     render () {
         return (
@@ -66,8 +75,8 @@ class AppointmentList extends React.Component {
                                 <td><p>{appointment.reason}</p></td>
                                 <td>
             
-                                <td><button type="button" onClick="RemoveRow" className="btn btn-danger">Cancel</button></td>
-                                <td><button type="button" onClick="RemoveRow" className="btn btn-primary">Finished</button></td>
+                                <td><button type="button" onClick={(handleRemo) => this.deleteAppointment(appointment.id)} className="btn btn-danger">Cancel</button></td>
+                                <td><button type="button" onClick={()=> this.deleteAppointment(appointment.id)} className="btn btn-primary">Finished</button></td>
                                 <div className="alert alert-success d-none mb-0" id="success-message">
                                     Appointment Completed 
                                 </div>
