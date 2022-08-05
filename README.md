@@ -7,6 +7,22 @@ Team:
 
 ## Design
 
+Manufacturer and Vehicle are connected:
+- each vehicle has one manufacturer.
+- each manufacturer can be associated with many vehicles.
+
+Automobiles and vehicles connection:
+- an automobile is only associated with one vehicle.
+- a vehicle can be associated with many automobiles.
+
+customer and automobile should, theoretically, be connected with each other.
+- a customer can purchase multiple automobiles.
+- a automobile can only be associated with one customer.
+ 
+Sales person and sales should have a connection with each other.
+- One sales person can be a part of multiple sales.
+- a sale can only be associated with one sales person.
+
 ## Service microservice
 
 Explain your models and integration with the inventory
@@ -15,6 +31,8 @@ microservice, here.
 ## Sales microservice
 
 Utilize polling to pull automobile inventory from inventory microservice. 
+- get automobileVO model from sales_rest.models.py
+  - grab vin from automobile objects.
 
 All models need some kind of association with Navbar
 
@@ -40,8 +58,8 @@ create a sales model
   - price of sale
     - make it a float so it includes cents
   - one to one relationship with automobile
-  - one to many relationship with customer
-  - one to many relationship with salesPerson
+  - many to one relationship with customer
+  - many to one relationship with salesPerson
 
 Views.py:
 - create encoder for each model.
@@ -55,10 +73,9 @@ Views.py:
     - sales list do GET and POST 
     - delete do DELETE, PUT, and GET for individual sales
         - include delete for future testing.
-    - include automobileVO, customer, and sales person encoders as part sales encoder.
+    - include automobileVO, customer, and sales person encoders as part of sales encoder.
 - customer, sales person, and automobileVO more straight forward.
     - make PUT, GET, POST, DELETE for each so can test in Insomnia
-
     - include ID variable in customer encoder so customer ID can be retrieved.
     - mainly use ["DELETE","POST","GET"] for delete functionality, so name function after delete function
 
