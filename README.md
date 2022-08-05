@@ -124,11 +124,11 @@ service views
 
 Forms/lists:
 -appointmentList
-
+    http://localhost:8080/api/appointments/
 -service form
 
 -service history
-    
+
 -technician form
     -from http://localhost:8080/api/technician/
 
