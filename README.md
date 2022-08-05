@@ -9,7 +9,7 @@ Team:
 
 ## Bounded-Contexts:
     Inventory Microservice: 
-        -Automobiles
+        -Automobiles (Entity)
             -color
             -vin
             -year
@@ -17,15 +17,15 @@ Team:
             -returning
             -model
 
-        -Vehicles
+        -Vehicles (Value Object)
             -name
             -pic
 
-        -Manufacturers
+        -Manufacturers (Value Object)
             -name
 -------------------------------------------
     Service Microservice: Uses polling to grab from inventory 
-        - Technician(aggregate)
+        - Technician(Entity)
             -name
             -employee number
 
@@ -53,33 +53,34 @@ Team:
 
 ---------------------------------------------
     Sales Microservice:Uses polling to grab from inventory 
-        - Sales Person (aggregate)
+        - Sales Person (Entity)
             -name
             -employee number
 
-        - Potential Customer(aggregate)
+        - Potential Customer(Entity)
             -name
             -address
+            -id
             -phone number
 
-        - Sales Record(bounded context)
-            -automobile(value object)
-            -sales person(value object)
-            -customer(value object)
-            -price(entity)
+        - Sales Record(value Object)
+            -automobile
+            -sales person
+            -customer
+            -price
 
         - List All Sales(bounded context)
-            -sales person(value object)
+            -sales person
             -employee number
-            -purchaser(value object)
-            -vin(entity)
-            -price(entity)
+            -purchaser/customer
+            -automobile
+            -price
 
         - Sales Person History (aggregate)
-            -sales person(value object)
-            -customer(value object)
-            -vin  (entity)
-            -price of sale(entity)
+            -sales person
+            -customer
+            -vin/automobile
+            -price of sale
 
 Manufacturer and Vehicle are connected:
 - each vehicle has one manufacturer.
