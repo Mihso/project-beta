@@ -7,7 +7,6 @@ Team:
 
 ## Design
 
-## Service microservice
 
 Explain your models and integration with the inventory
 microservice, here.
@@ -97,6 +96,10 @@ Forms/lists:
 might want to create separate page with all sales-based links so Nav bar isn't so cluttered.
   - implemented dropdown menu with with all sales related information using bootstrap.
 
+
+
+
+
 ## Service Microservice
 
 Use polling to retrieve inventory from inventory mircroservice 
@@ -151,3 +154,78 @@ Forms/lists:
 -technician form
     -from http://localhost:8080/api/technician/
 
+
+
+## Bounded-Contexts:
+    Inventory Microservice: 
+        -Automobiles
+            -color
+            -vin
+            -year
+            -sold
+            -returning
+            -model
+
+        -Vehicles
+            -name
+            -pic
+
+        -Manufacturers
+            -name
+-------------------------------------------
+    Service Microservice: Uses polling to grab from inventory 
+        - Technician(aggregate)
+            -name
+            -employee number
+
+        - Service Appointments(aggregate)
+            -vin
+            -owner
+            -date
+            -technician
+            -reason
+
+        - Appointments List(aggregate)
+            -vin
+            -owner
+            -date
+            -auto
+            -technician 
+            -reason
+
+        - Service History(aggregate)
+            -vin
+            -owner
+            -date
+            -technician 
+            -reason
+
+---------------------------------------------
+    Sales Microservice:Uses polling to grab from inventory 
+        - Sales Person (aggregate)
+            -name
+            -employee number
+
+        - Potential Customer(aggregate)
+            -name
+            -address
+            -phone number
+
+        - Sales Record(aggregate)
+            -automobile(value object)
+            -sales person(value object)
+            -customer(value object)
+            -price(entity)
+
+        - List All Sales(aggregate)
+            -sales person(value object)
+            -employee number
+            -purchaser(value object)
+            -vin(entity)
+            -price(entity)
+
+        - Sales Person History (aggregate)
+            -sales person(value object)
+            -customer(value object)
+            -vin  (entity)
+            -price of sale(entity)

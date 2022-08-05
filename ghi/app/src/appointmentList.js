@@ -75,7 +75,7 @@ deleteAppointment(props){
                                 <td><p>{appointment.reason}</p></td>
                                 <td>
             
-                                <td><button type="button" onClick={(handleRemo) => this.deleteAppointment(appointment.id)} className="btn btn-danger">Cancel</button></td>
+                                <td><button type="button" onClick={() => this.deleteAppointment(appointment.id)} className="btn btn-danger">Cancel</button></td>
                                 <td><button type="button" onClick={()=> this.deleteAppointment(appointment.id)} className="btn btn-primary">Finished</button></td>
                                 <div className="alert alert-success d-none mb-0" id="success-message">
                                     Appointment Completed 
