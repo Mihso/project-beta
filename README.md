@@ -54,14 +54,14 @@ Team:
 ---------------------------------------------
     Sales Microservice:Uses polling to grab from inventory 
         - Sales Person (Entity)
-            -name
-            -employee number
+            - name
+            - employee number
 
         - Potential Customer(Entity)
-            -name
-            -address
-            -id
-            -phone number
+            - name
+            - address
+            - id
+            - phone number
 
         - Sales Record(value Object)
             -automobile
@@ -70,24 +70,27 @@ Team:
             -price
 
         - List All Sales(bounded context)
-            -sales person
-            -employee number
-            -purchaser/customer
-            -automobile
-            -price
+            - sales Record
+            - sales person
+            - employee number
+            - purchaser/customer
+            - automobile
+            - price
 
         - Sales Person History (aggregate)
-            -sales person
-            -customer
-            -vin/automobile
-            -price of sale
+            - sales person
+            - customer
+            - vin/automobile
+            - price of sale
+----------------------------------
+
+## General Relationships
 
 Technician, service/service history, and appointments are connected:
 - one technician can have multiple appointments with multiple services 
 - one appointment can be associated with one technician 
 - a service can be associated with a technician 
 - a technician can have multiple appointments with different automobiles 
-
 
 Automobile and service history are connected:
 - one auto can have multiple services 
@@ -113,6 +116,9 @@ customer and automobile should, theoretically, be connected with each other.
 Sales person and sales should have a connection with each other.
 - One sales person can be a part of multiple sales.
 - a sale can only be associated with one sales person.
+
+Pollers:
+- allow for connection between both sales and service microservices to inventory microservice.
 
 ## Service microservice
 
