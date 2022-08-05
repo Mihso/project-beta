@@ -81,6 +81,22 @@ Team:
             -vin  (entity)
             -price of sale(entity)
 
+Technician, service/service history, and appointments are connected:
+- one technician can have multiple appointments with multiple services 
+- one appointment can be associated with one technician 
+- a service can be associated with a technician 
+- a technician can have multiple appointments with different automobiles 
+
+
+Automobile and service history are connected:
+- one auto can have multiple services 
+- service history can only be associated with one automobile
+
+Automobile and appointments are connected:
+- one automobile can have many appointments 
+- an appointment can only be associated with one automobile 
+- one auto can have multiple services done previously 
+
 Manufacturer and Vehicle are connected:
 - each vehicle has one manufacturer.
 - each manufacturer can be associated with many vehicles.
