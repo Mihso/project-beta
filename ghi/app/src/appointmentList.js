@@ -43,33 +43,36 @@ class AppointmentList extends React.Component {
                 <div className="container">
                     <h2>Services</h2>
                     <div className="row gx-5 gy-3 row-cols-3">
-                        <table className="center table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">VIN</th>
-                                    <th scope="col">Customer Name</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Technician</th>
-                                    <th scope="col">Reason</th>
-                                </tr>
-                            </thead>
-                        <tbody>
-                    {this.state.appointments.map((appointment) => {
-                        return (
-                        <tr scope="row" key={appointment.id}>
-                            <td><p>{appointment.auto.vin}</p></td>
-                            <td><p>{appointment.owner}</p></td>
-                            <td><p>{getDate(appointment.date)}</p></td>
-                            <td><p>{getTime(appointment.date)}</p></td>
-                            <td><p>{appointment.technician.name}</p></td>
-                            <td><p>{appointment.reason}</p></td>
-                            <td>
-                            <button type="button" class="btn btn-danger">Cancel</button>
-                            <button className="btn btn-primary">Finished</button>
-                            </td>
-
-                        </tr>
+                            <table className="center table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">VIN</th>
+                                        <th scope="col">Customer Name</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Time</th>
+                                        <th scope="col">Technician</th>
+                                        <th scope="col">Reason</th>
+                                    </tr>
+                                </thead>
+                            <tbody>
+                        {this.state.appointments.map((appointment) => {
+                            return (
+                            <tr scope="row" key={appointment.id}>
+                                <td><p>{appointment.auto.vin}</p></td>
+                                <td><p>{appointment.owner}</p></td>
+                                <td><p>{getDate(appointment.date)}</p></td>
+                                <td><p>{getTime(appointment.date)}</p></td>
+                                <td><p>{appointment.technician.name}</p></td>
+                                <td><p>{appointment.reason}</p></td>
+                                <td>
+            
+                                <td><button type="button" onClick="RemoveRow" className="btn btn-danger">Cancel</button></td>
+                                <td><button type="button" onClick="RemoveRow" className="btn btn-primary">Finished</button></td>
+                                <div className="alert alert-success d-none mb-0" id="success-message">
+                                    Appointment Completed 
+                                </div>
+                                </td>
+                            </tr>
                         )
                         })}
                         </tbody>

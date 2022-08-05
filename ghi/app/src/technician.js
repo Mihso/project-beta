@@ -58,7 +58,6 @@ return(
     <div className="px-2 py-3 my-5 mt-0 rounded-pill text-center bg-success">
         <h1 className="display-5 fw-bold">Find a technician</h1>
         <div className="col-lg-6 mx-auto" />
-        
     </div>
     <div className="row">
     <div className="col">

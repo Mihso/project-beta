@@ -53,7 +53,10 @@ async componentDidMount(){
                 <div className="card-shadow">
                 <div className="card-body">
                     <div className="topnav">
-                        <input type="text" placeholder="Search Vin"></input>
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search VIN" aria-label="Search"/>
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
                     </div>
                     </div>    
                 </div>
@@ -70,7 +73,6 @@ async componentDidMount(){
                             <th scope="col">VIN</th>
                             <th scope="col">Customer Name</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Time</th>
                             <th scope="col">Technician</th>
                             <th scope="col">Reason</th>
                         </tr>
@@ -83,7 +85,6 @@ async componentDidMount(){
                                     <td><p>{service.auto.vin}</p></td>
                                     <td><p>{service.owner}</p></td>
                                     <td><p>{service.date}</p></td>
-                                    <td><p>{service.time}</p></td>
                                     <td><p>{service.technician}</p></td>
                                     <td><p>{service.reason}</p></td>
                                 </tr>
