@@ -238,6 +238,7 @@ List of appointments(added to navbar as dropdown(services))
 - technician 
 - reason
 - returning (VIP)
+- cancel delete button works but you need to refresh webpage 
 
 service history(navbar service dropdown)
 -vin
