@@ -120,3 +120,15 @@ service views
    -service
    -appointment 
 -service list(get, post, delete)
+
+
+Forms/lists:
+-appointmentList
+
+-service form
+
+-service history
+    
+-technician form
+    -from http://localhost:8080/api/technician/
+

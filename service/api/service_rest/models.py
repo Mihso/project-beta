@@ -7,7 +7,7 @@ class AutomobileVO(models.Model):
     returning = models.BooleanField(null=False, default= False)
 
     def get_api_url(self):
-        return reverse("api_AutomobileVO", kwargs={"pk": self.id})
+        return reverse("api_AutomobileVO", kwargs={"pk": self.vin})
 
 
 class Technician(models.Model):
@@ -23,7 +23,17 @@ class Appointments(models.Model):
     owner = models.CharField(max_length=100)
     date = models.DateTimeField()
     time = models.TimeField()
-    technician = models.CharField(max_length=100)
+    auto = models.OneToOneField(
+        "AutomobileVO",
+        related_name="services",
+        on_delete=models.CASCADE,
+    )
+    technician = models.ForeignKey(
+        "technician",
+        related_name="services",
+        on_delete=models.CASCADE,
+    )
+
     reason = models.CharField(max_length=100)
 
     def get_api_url(self):
@@ -37,3 +47,4 @@ class Service(models.Model):
     technician = models.CharField(max_length=100)
     reason = models.CharField(max_length=200)
     
+

@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import serviceList, serviceDelete, appointmentList, technicianList
+from .views import serviceDelete, appointmentList, technicianList, appointmentDelete
 
 urlpatterns = [
-    path('service/', serviceList, name="list_services"),
+    # path('service/', serviceList, name="list_services"),
+    path('appointments/<int:pk>/', appointmentDelete, name="delete_appointments"),
     path('service/<int:pk>/', serviceDelete, name="delete_services"),
     path('appointments/', appointmentList, name="list_appointments"),
     path('technicianList/',technicianList, name="list_technicians")
