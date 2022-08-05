@@ -128,19 +128,17 @@ handleReasonChange(event){
                             <label htmlFor="address">Owner</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input onChange={(ev) => {this.setState({date:ev.target.value})}} type="date" required placeholder="Date" name="date-brought-in" id="brought-in" min="2022-08-01" max="3000-12-31 "className="form-control" />
-                            <label htmlFor="date">Date Brought in</label>
-                        <div className="form-floating mb-3">
-                            <input onChange={(ev) => {this.setState({time:ev.target.value})}} required placeholder='Time' type="time" step="1" value={this.state.time} name="time-brought-in" id="time-brought-in" className="form-control" />
-                            <label htmlFor="time">Time Brought In</label>
+                        <div>
+                            <label htmlFor="appointment-time">Choose a time for your appointment:</label>
+                        </div>
+                            <input type="datetime-local" id="appointment-time" name="appointment-time" value="2022-08-01T19:30" min="2018-06-07T00:00" max="2018-06-14T00:00"/>
+                        </div>
                         <div className="form-floating mb-3">
                             <input onChange={this.handleTechnicianChange} value={this.state.technician} required placeholder='Technician' type="text" name="technician" id="technician" className="form-control"/>
                             <label htmlFor='technician'>Technician</label>
                         <div className="form-floating mb-3">
                             <input onChange={this.handleReasonChange} value={this.state.reason} required placeholder='Reason' type="text" name="reason" id="reason" className="form-control"/>
                             <label htmlFor='reason'>Reason</label>
-                        </div>
-                        </div>
                         </div>
                         </div>
                         </div>
