@@ -37,4 +37,5 @@ class AutomobileEncoder(ModelEncoder):
     ]
     encoders = {
         "model": VehicleModelEncoder(),
+
     }
