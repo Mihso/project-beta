@@ -86,6 +86,7 @@ handleOwnerChange(event){
 }
 handleDateChange(event){
     const value = event.target.value
+    console.log(value)
     this.setState({date: value})
 }
 handleTimeChange(event){
