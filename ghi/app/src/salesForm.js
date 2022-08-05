@@ -41,7 +41,7 @@ async handleSubmit(event){
             console.log("got it")
         }
 
-    const hatUrl = 'http://localhost:8090/api/sales/';
+    const salesUrl = 'http://localhost:8090/api/sales/';
     const fetchConfig = {
         method: "post",
         body: JSON.stringify(data),
@@ -49,7 +49,7 @@ async handleSubmit(event){
             'Content-Type': 'application/json',
         },
         };
-        const response = await fetch(hatUrl, fetchConfig);
+        const response = await fetch(salesUrl, fetchConfig);
         if (response.ok) {
             const cleared = {
                 price: '',

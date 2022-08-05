@@ -5,10 +5,9 @@ class ServiceForm extends React.Component {
 constructor(props){
     super(props)
     this.state = {
-        vin: '',
+        auto: '',
         owner: [],
         date: '',
-        time: '',
         technicians: [],
         reason: '',
     
@@ -16,7 +15,6 @@ constructor(props){
     this.handleVinChange = this.handleVinChange.bind(this)
     this.handleOwnerChange = this.handleOwnerChange.bind(this)
     this.handleDateChange = this.handleDateChange.bind(this)
-    this.handleTimeChange = this.handleTimeChange.bind(this)
     this.handleTechnicianChange = this.handleTechnicianChange.bind(this)
     this.handleReasonChange = this.handleReasonChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -26,26 +24,26 @@ constructor(props){
 async handleSubmit(event){
     event.preventDefault()
     const data = {...this.state}
-    delete data.technicians
+    delete data.technicians;
 
-    const returningOwnerUrl = `http://localhost:8100/api/automobiles/${data.auto}`
-    const returningOwner = await fetch(returningOwnerUrl)
-    const autoDetails = await returningOwner.json()
-    autoDetails.returning = true
-    const fetchReturningConfig = {
-        method: "post",
-        body: JSON.stringify(autoDetails),
-        headers: {
-            'Content-Type': 'application/json'
-    }
-    }
+    // const returningOwnerUrl = `http://localhost:8100/api/automobiles/${data.auto}`
+    // const returningOwner = await fetch(returningOwnerUrl)
+    // const autoDetails = await returningOwner.json()
+    // autoDetails.returning = true
+    // const fetchReturningConfig = {
+    //     method: "post",
+    //     body: JSON.stringify(autoDetails),
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    // }
+    // }
 
-    const returningResponse = await fetch(returningOwnerUrl, fetchReturningConfig)
-    if (returningResponse.ok) {
-        console.log("welcome back")
-    }
+    // const returningResponse = await fetch(returningOwnerUrl, fetchReturningConfig)
+    // if (returningResponse.ok) {
+    //     console.log("welcome back")
+    // }
 
-const serviceUrl = 'http://localhost:8080/api/service/'
+const serviceUrl = 'http://localhost:8080/api/appointments/'
 const fetchConfig = {
     method: "post",
     body: JSON.stringify(data),
@@ -56,11 +54,10 @@ const fetchConfig = {
 const response = await fetch(serviceUrl, fetchConfig)
 if (response.ok) {
     const cleared ={
-        vin: '',
+        auto: '',
         owner: '',
         technician: '',
         date: '',
-        time: '',
         reason: '',
     }
     this.setState(cleared)
@@ -79,7 +76,7 @@ const autoResponse = await fetch(autoUrl)
 }
 handleVinChange(event){
     const value = event.target.value
-    this.setState({vin: value})
+    this.setState({auto: value})
 }
 handleOwnerChange(event){
     const value = event.target.value
@@ -130,7 +127,7 @@ async componentDidMount(){
                         <div className = 'row'>
                             <div className = 'col'>
                         <div className="form-floating mb-3">
-                            <input onChange={this.handleVinChange} value={this.state.vin} required placeholder="Vin" type="text" name="name" id="name" className="form-control" />
+                            <input onChange={this.handleVinChange} value={this.state.auto} required placeholder="Vin" type="text" name="name" id="name" className="form-control" />
                             <label htmlFor="name">Vin</label>
                         </div>
                         <div className="form-floating mb-3">
@@ -141,7 +138,7 @@ async componentDidMount(){
                         <div>
                             <label htmlFor="appointment-time">Choose a time for your appointment:</label>
                         </div>
-                            <input type="datetime-local" id="appointment-time" name="appointment-time" /*value="2022-08-01T19:30"*/ min="2018-06-07T00:00" max="2022-06-14T00:00"/>
+                            <input onChange={this.handleDateChange} type="datetime-local" id="appointment-time" name="appointment-time" value={this.state.date} min="2018-06-07T00:00" max="2022-06-14T00:00"/>
                         </div>
                         <div className="form-floating mb-3">
                         <select onChange={this.handleTechnicianChange} value={this.state.technician} required id="technician" name = "technician" className="form-select">
