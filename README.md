@@ -7,8 +7,7 @@ Team:
 
 ## Design
 
-<<<<<<< HEAD
-=======
+
 Manufacturer and Vehicle are connected:
 - each vehicle has one manufacturer.
 - each manufacturer can be associated with many vehicles.
@@ -26,7 +25,7 @@ Sales person and sales should have a connection with each other.
 - a sale can only be associated with one sales person.
 
 ## Service microservice
->>>>>>> 1726d12043ba84a8521efaa51f4ce247e3258041
+
 
 Explain your models and integration with the inventory
 microservice, here.
