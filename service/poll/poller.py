@@ -20,8 +20,8 @@ def get_locations():
     for automobile in content['autos']:
         print(automobile)
         AutomobileVO.objects.update_or_create(
-            id=automobile['id'],
-            vin = automobile['vin']
+            vin = automobile['vin'],
+            returning = automobile['returning']
         )
 
 def poll():
@@ -30,7 +30,6 @@ def poll():
         try:
             # Write your polling logic, here
             get_locations()
-            pass
         except Exception as e:
             print(e, file=sys.stderr)
         time.sleep(60)

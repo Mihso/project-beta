@@ -30,32 +30,30 @@ class ServiceEncoder(ModelEncoder):
 class AppointmentsEncoder(ModelEncoder):
     model = Appointments
     properties =[
-        "vin",
         "owner",
         "date",
         "time",
-        "technician"
+        "technician",
         "reason",
     ]
     encoders={
         'auto': AutomobileEncoder(),
-        'person': TechnicianEncoder(),
-        'service': ServiceEncoder(),
+        'technician': TechnicianEncoder(),
     }
 
 @require_http_methods(["GET", "POST", "DELETE"])
-def serviceList(request):
+def appointmentList(request):
     if request.method == "GET":
-        serv = Service.objects.all()
+        appointment = Appointments.objects.all()
         return JsonResponse(
-            {"services": serv},
-            encoder = ServiceEncoder,
+            {"appointments": appointment},
+            encoder = AppointmentsEncoder,
         )
     else:
         content = json.loads(request.body)
         try:
             auto=content["auto"]
-            result = AutomobileVO.objects.get(id=auto)
+            result = AutomobileVO.objects.get(vin=auto)
             content["auto"] = result
         except AutomobileVO.DoesNotExist:
             return JsonResponse(
@@ -63,27 +61,27 @@ def serviceList(request):
                 status= 400
             )
         try:
-            person = content["person"]
-            result = Technician.objects.get(employeeNumber=person)
-            content["person"]=result
+            technician = content["technician"]
+            result = Technician.objects.get(employeeNumber=technician)
+            content["technician"]=result
         except Technician.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid Technician"},
                 status=400
             )
-        try: 
-            serviceNeeded = content["service"]
-            result = Service.objects.get(id=serviceNeeded)
-            content["service"] = result
-        except AutomobileVO.DoesNotExist:
-            return JsonResponse(
-                {"message": "Invalid Service"},
-                status=400
-            )
-        service = Service.objects.create(**content)
+        # try: 
+        #     serviceNeeded = content["service"]
+        #     result = Service.objects.get(id=serviceNeeded)
+        #     content["service"] = result
+        # except AutomobileVO.DoesNotExist:
+        #     return JsonResponse(
+        #         {"message": "Invalid Service"},
+        #         status=400
+        #     )
+        appointment = Appointments.objects.create(**content)
         return JsonResponse(
-            service,
-            encoder=ServiceEncoder,
+            appointment,
+            encoder=AppointmentsEncoder,
             safe=False,
         )
 @require_http_methods(["DELETE", "GET"])
@@ -92,22 +90,22 @@ def serviceDelete(request, pk):
         count,= Service.objects.all().delete()
         return JsonResponse({"deleted": count > 0})
 
-@require_http_methods(["GET", "POST", "DELETE"])
-def appointmentList(request):
-    if request.method=="GET":
-        appt = Appointments.objects.all()
-        return JsonResponse(
-            {"service": appt},
-            encoder = AppointmentsEncoder
-        )
-    else:
-        content = json.loads(request.body)
-        shoe = Appointments.objects.create(**content)
-        return JsonResponse(
-            appt,
-            encoder =AppointmentsEncoder,
-            safe=False,
-        )
+# @require_http_methods(["GET", "POST", "DELETE"])
+# def appointmentList(request):
+#     if request.method=="GET":
+#         appt = Appointments.objects.all()
+#         return JsonResponse(
+#             {"service": appt},
+#             encoder = AppointmentsEncoder
+#         )
+#     else:
+#         content = json.loads(request.body)
+#         shoe = Appointments.objects.create(**content)
+#         return JsonResponse(
+#             appt,
+#             encoder =AppointmentsEncoder,
+#             safe=False,
+#         )
 
 @require_http_methods(["DELETE", "GET"])
 def appointmentDelete(request, pk):
@@ -118,16 +116,16 @@ def appointmentDelete(request, pk):
 @require_http_methods(["GET", "POST", "DELETE"])
 def technicianList(request):
     if request.method == "GET":
-        tech = Technician.objects.all()
+        technician = Technician.objects.all()
         return JsonResponse(
-            {"technician": tech},
+            {"technician": technician},
             encoder = TechnicianEncoder
         )
     else:
         content = json.loads(request.body)
-        tech = Technician.objects.create(**content)
+        technician = Technician.objects.create(**content)
         return JsonResponse(
-            tech,
+            technician,
             encoder=TechnicianEncoder,
             safe=False
         )
@@ -138,3 +136,5 @@ def technicianDelete(request, pk):
     if request.method == "DELETE":
         count, _=Technician.objects.all().delete()
         return JsonResponse({"deleted": count > 0})
+
+
