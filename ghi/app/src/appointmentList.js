@@ -1,5 +1,16 @@
 import React from 'react'
 
+function getDate(props)
+{
+    let convert = new Date(props);
+    return `${convert.getDate()}-${convert.getMonth()}-${convert.getFullYear()}`;
+}
+
+function getTime(props){
+    let convert = new Date(props)
+    return `${convert.getUTCHours()}:${convert.getUTCMinutes()}`
+}
+
 class AppointmentList extends React.Component {
     constructor(props) {
         super(props)
@@ -49,8 +60,8 @@ class AppointmentList extends React.Component {
                         <tr scope="row" key={appointment.id}>
                             <td><p>{appointment.auto.vin}</p></td>
                             <td><p>{appointment.owner}</p></td>
-                            <td><p>{appointment.date}</p></td>
-                            <td><p>{appointment.time}</p></td>
+                            <td><p>{getDate(appointment.date)}</p></td>
+                            <td><p>{getTime(appointment.date)}</p></td>
                             <td><p>{appointment.technician.name}</p></td>
                             <td><p>{appointment.reason}</p></td>
                             <td>
