@@ -85,7 +85,7 @@ async componentDidMount(){
                   </div>
                   <div className="form-floating mb-3">
                     <input onChange={this.handleNumberChange} value={this.state.phoneNumber} required placeholder="Number" type="number" name="number" id="number" className="form-control" />
-                    <label htmlFor="number">Phone Number</label>
+                    <label htmlFor="number">Phone Number (ex: 5106789101)</label>
                   </div>
                   </div>
                   </div>
