@@ -1,5 +1,7 @@
 import React from 'react'
 
+let update
+
 function getDate(props)
 {
     let convert = new Date(props);
@@ -41,6 +43,17 @@ class AppointmentList extends React.Component {
             }
     }
 
+    async componentDidUpdate(){
+        const appointmentsUrl = 'http://localhost:8080/api/appointments/';
+
+        const appointmentsResponse = await fetch(appointmentsUrl);
+        
+        if (appointmentsResponse.ok) {
+            const data = await appointmentsResponse.json();
+            this.setState({appointments: data.appointments});
+        }
+    }
+
 deleteAppointment(props){
     const technicianUrl = `http://localhost:8080/api/appointments/${props}/`
     const fetchConfig ={
@@ -57,7 +70,6 @@ deleteAppointment(props){
     
     if (appointmentsResponse.ok) {
         const data = appointmentsResponse.json();
-        console.log(data)
         this.setState({appointments: data.appointments});
     } 
 
