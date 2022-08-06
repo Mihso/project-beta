@@ -1,7 +1,5 @@
 import React from 'react'
 
-let update
-
 function getDate(props)
 {
     let convert = new Date(props);
@@ -11,17 +9,6 @@ function getDate(props)
 function getTime(props){
     let convert = new Date(props)
     return `${convert.getUTCHours()}:${convert.getUTCMinutes()}`
-}
-
-async function updater(props){
-    const appointmentsUrl = 'http://localhost:8080/api/appointments/';
-
-    const appointmentsResponse = await fetch(appointmentsUrl);
-    
-    if (appointmentsResponse.ok) {
-        const data = await appointmentsResponse.json();
-        props.setState({appointments: data.appointments});
-    } 
 }
 
 class AppointmentList extends React.Component {
@@ -38,12 +25,13 @@ class AppointmentList extends React.Component {
         
             const response = await fetch(appointmentsUrl)
             if (response.ok) {
-                const data = await response.json()
-                this.setState({appointments: data.appointments})
+                const data = await response.json();
+                this.setState({appointments: data.appointments});
             }
     }
 
     async componentDidUpdate(){
+        
         const appointmentsUrl = 'http://localhost:8080/api/appointments/';
 
         const appointmentsResponse = await fetch(appointmentsUrl);
@@ -109,12 +97,10 @@ deleteAppointment(props){
                                 <td><p>{appointment.technician.name}</p></td>
                                 <td><p>{appointment.reason}</p></td>
                                 <td>
-<<<<<<< HEAD
-                                
-=======
->>>>>>> d40ba4541980dfa82e79a0c6dd1a61850800e052
-                                <td><button type="button" onClick={() => this.deleteAppointment(appointment.id)} className="btn btn-danger">Cancel</button></td>
-                                <td><button type="button" onClick={()=> this.deleteAppointment(appointment.id)} className="btn btn-primary">Finished</button></td>
+                                <button type="button" onClick={() => this.deleteAppointment(appointment.id)} className="btn btn-danger">Cancel</button>
+                                </td>
+                                <td>
+                                <button type="button" onClick={()=> this.deleteAppointment(appointment.id)} className="btn btn-primary">Finished</button>
                                 <div className="alert alert-success d-none mb-0" id="success-message">
                                     Appointment Completed 
                                 </div>
