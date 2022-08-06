@@ -8,7 +8,7 @@ async function updater(props){
     if (serviceResponse.ok) {
         const data = await serviceResponse.json()
         const after = data.services.filter(service => {
-            return service.automobile.vin == props.state.automobile})
+            return service.auto.vin == props.state.auto})
         props.setState({service: after})
         } 
     }
@@ -17,24 +17,26 @@ class ServiceHistoryForm extends React.Component {
 constructor(props){
     super(props)
     this.state = {
-        service: [],
+        vin: "",
+        services: [],
     }
     this.handleServiceChange = this.handleServiceChange.bind(this)
 }
 
 handleServiceChange(event){
     const value = event.target.value
-    this.setState({service: value})
+    this.setState({vin: value})
+    updater(this)
 }
 
 async componentDidMount(){
-    const serviceUrl = 'http://localhost:8080/api/service/'
+    const serviceUrl = 'http://localhost:8080/api/appointments/'
     const serviceResponse = await fetch(serviceUrl)
 
     if (serviceResponse.ok) {
         const data = await serviceResponse.json()
         console.log(data)
-        const after = data.service.filter(service=> {return service.vin = this.state.vin})
+        const after = data.appointments.filter(service=> {return service.auto.vin = this.state.vin})
         this.setState({services: after})
 
     }
@@ -53,9 +55,9 @@ async componentDidMount(){
                 <div className="card-shadow">
                 <div className="card-body">
                     <div className="topnav">
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search VIN" aria-label="Search"/>
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <form className="form-inline">
+                        <input className="form-control mr-sm-2" type="search" placeholder="Search VIN" aria-label="Search"/>
+                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                     </div>
                     </div>    
@@ -78,7 +80,7 @@ async componentDidMount(){
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.service.map((service) => {
+                        {this.state.services.map((service) => {
                             console.log(service.vin)
                             return (
                                 <tr scope="row" key={service.id}>

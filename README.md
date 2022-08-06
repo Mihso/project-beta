@@ -239,6 +239,7 @@ List of appointments(added to navbar as dropdown(services))
 - reason
 - returning (VIP)
 - cancel delete button works but you need to refresh webpage 
+  - recently utilized componentDidUpdate function to get it to refresh information, but causes terminal to repeatedly print GET messages.
 
 service history(navbar service dropdown)
 -vin
