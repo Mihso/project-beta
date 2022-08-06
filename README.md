@@ -254,7 +254,7 @@ service views
    - technician 
    -service
    -appointment 
--service list(get, post, delete)
+-service list(get , post, delete)
 
 
 Forms/lists:
