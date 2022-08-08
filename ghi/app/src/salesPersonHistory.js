@@ -54,7 +54,7 @@ async componentDidMount(){
     
     if (salesResponse.ok) {
         const data = await salesResponse.json();
-        const after = data.sales.filter(sale => {return sale.person.employeeNumber = this.state.person})
+        const after = data.sales.filter(sale => {return sale.person.employeeNumber == this.state.person})
         this.setState({sales: after});
     }
 }

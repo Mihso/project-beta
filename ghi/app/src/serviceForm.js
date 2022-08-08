@@ -5,7 +5,7 @@ class ServiceForm extends React.Component {
 constructor(props){
     super(props)
     this.state = {
-        auto: '',
+        autos: [],
         owner: [],
         date: '',
         technicians: [],
@@ -25,6 +25,7 @@ async handleSubmit(event){
     event.preventDefault()
     const data = {...this.state}
     delete data.technicians;
+    delete data.autos;
 
     // const returningOwnerUrl = `http://localhost:8100/api/automobiles/${data.auto}`
     // const returningOwner = await fetch(returningOwnerUrl)
@@ -109,6 +110,15 @@ async componentDidMount(){
       const data = await response.json();
         this.setState({technicians: data.technician});
       }
+    
+      const autoUrl = 'http://localhost:8100/api/automobiles'
+      const autoResponse = await fetch(autoUrl)
+  
+      if(autoResponse.ok)
+      {
+          const autoData = await autoResponse.json()
+          this.setState({autos: autoData.autos})
+      }
     }
     
         render(){
@@ -127,8 +137,16 @@ async componentDidMount(){
                         <div className = 'row'>
                             <div className = 'col'>
                         <div className="form-floating mb-3">
-                            <input onChange={this.handleVinChange} value={this.state.auto} required placeholder="Vin" type="text" name="name" id="name" className="form-control" />
-                            <label htmlFor="name">Vin</label>
+                        <select onChange={this.handleVinChange} value={this.state.auto} required id="vin" name = "vin" className="form-select">
+                            <option value="">Choose a Vin.</option>
+                            {this.state.autos.map(vin => {
+                            return(
+                                <option key={vin.vin} value={[vin.vin]}>
+                                    {vin.vin}
+                                </option>  
+                            );
+                        })}
+                        </select>
                         </div>
                         <div className="form-floating mb-3">
                             <input onChange={this.handleOwnerChange} value={this.state.owner} required placeholder="Owner" type="text" name="address" id="address" className="form-control" />

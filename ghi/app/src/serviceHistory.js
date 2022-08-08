@@ -1,23 +1,24 @@
 import React from 'react'
 
 async function updater(props){
-    const serviceUrl = `http://localhost:8080/api/service/`
+    const serviceUrl = `http://localhost:8080/api/appointments/`
 
     const serviceResponse = await fetch(serviceUrl)
     
+
     if (serviceResponse.ok) {
         const data = await serviceResponse.json()
-        const after = data.services.filter(service => {
-            return service.auto.vin == props.state.auto})
-        props.setState({service: after})
-        } 
+        const after = data.appointments.filter(service=> {return service.auto.vin == props.state.vin})
+        props.setState({services: after})
+
+    }
     }
 
 class ServiceHistoryForm extends React.Component {
 constructor(props){
     super(props)
     this.state = {
-        vin: "",
+        vins: [],
         services: [],
     }
     this.handleServiceChange = this.handleServiceChange.bind(this)
@@ -30,13 +31,21 @@ handleServiceChange(event){
 }
 
 async componentDidMount(){
+    const autoUrl = 'http://localhost:8100/api/automobiles'
+    const autoResponse = await fetch(autoUrl)
+
+    if(autoResponse.ok)
+    {
+        const autoData = await autoResponse.json()
+        this.setState({vins: autoData.autos})
+    }
     const serviceUrl = 'http://localhost:8080/api/appointments/'
     const serviceResponse = await fetch(serviceUrl)
 
+
     if (serviceResponse.ok) {
         const data = await serviceResponse.json()
-        console.log(data)
-        const after = data.appointments.filter(service=> {return service.auto.vin = this.state.vin})
+        const after = data.appointments.filter((service) => {return service.auto.vin == this.state.vin})
         this.setState({services: after})
 
     }
@@ -56,8 +65,18 @@ async componentDidMount(){
                 <div className="card-body">
                     <div className="topnav">
                     <form className="form-inline">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search VIN" aria-label="Search"/>
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <div className="mb-3">
+                        <select onChange={this.handleServiceChange} value={this.state.vin} required id="vin" name = "vin" className="form-select">
+                            <option value="">Choose a Vin.</option>
+                            {this.state.vins.map(vin => {
+                            return(
+                                <option key={vin.vin} value={[vin.vin]}>
+                                    {vin.vin}
+                                </option>  
+                            );
+                        })}
+                        </select>
+                    </div>
                     </form>
                     </div>
                     </div>    
@@ -81,13 +100,12 @@ async componentDidMount(){
                     </thead>
                     <tbody>
                         {this.state.services.map((service) => {
-                            console.log(service.vin)
                             return (
                                 <tr scope="row" key={service.id}>
                                     <td><p>{service.auto.vin}</p></td>
                                     <td><p>{service.owner}</p></td>
                                     <td><p>{service.date}</p></td>
-                                    <td><p>{service.technician}</p></td>
+                                    <td><p>{service.technician.name}</p></td>
                                     <td><p>{service.reason}</p></td>
                                 </tr>
                             )
