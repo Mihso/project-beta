@@ -98,6 +98,14 @@ async componentDidMount(){
                         );
                       })}
                     </select>
+                    {this.state.models.map(model => 
+                        {if(model.id == this.state.model_id)
+                        {
+                        return(
+                          <img key={model.id} src={model.picture_url} className="img-thumbnail img-fluid" style={{height: "100px"}}/>
+                        );
+                      }
+                    })}
                   </div>
                   <div className = 'row'>
                     <div className = 'col'>

@@ -10,6 +10,7 @@ async function updater(props){
         const after = data.sales.filter(sale => {
             return sale.person.employeeNumber == props.state.person})
         props.setState({sales: after});
+        props.setState({allSales: data.sales});
     }
 }
 
@@ -18,6 +19,7 @@ constructor(props){
     super(props);
     this.state = {
         sales:[],
+        allSales:[],
         persons: [],
     };
 
@@ -36,6 +38,20 @@ handlePersonChange(event){
     this.setState({person: value});
     updater(this);
 }
+
+getNumber(props)
+{
+    let count = 0;
+    for(let a of this.state.allSales)
+    {
+        if(a.person.employeeNumber == props)
+        {
+            count += 1;
+        }
+    }
+    return count
+}
+
 
 
 async componentDidMount(){
@@ -56,6 +72,7 @@ async componentDidMount(){
         const data = await salesResponse.json();
         const after = data.sales.filter(sale => {return sale.person.employeeNumber == this.state.person})
         this.setState({sales: after});
+        this.setState({allSales: data.sales});
     }
 }
 
@@ -79,7 +96,7 @@ async componentDidMount(){
                             {this.state.persons.map(person => {
                             return(
                                 <option key={person.employeeNumber} value={[person.employeeNumber]}>
-                                    {person.name}
+                                    {person.name} ({this.getNumber(person.employeeNumber)})
                                 </option>  
                             );
                         })}

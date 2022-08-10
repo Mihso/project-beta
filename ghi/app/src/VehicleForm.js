@@ -86,7 +86,8 @@ async componentDidMount(){
                             <input onChange={this.handlePictureChange} value={this.state.picture_url} placeholder="Picture" required type="url" name = "pictureUrl" id="pictureUrl" className="form-control" />
                             <label htmlFor="pictureUrl">Picture</label>
                         </div>
-                        <div className="mb-3">
+                        <img src={this.state.picture_url} className="img-thumbnail img-fluid" style={{height: "100px"}}/>
+                        <div className="pt-2 form-floating mb-3">
                         <select onChange={this.handleManuChange} value={this.state.manu} required id="Manufacturer" name = "manufacturer" className="form-select">
                         <option value="">Choose a Manufacturer.</option>
                         {this.state.manus.map(manu => {
