@@ -20,6 +20,7 @@ constructor(props){
     this.state = {
         vins: [],
         services: [],
+        allServices: [],
     }
     this.handleServiceChange = this.handleServiceChange.bind(this)
 }
@@ -28,6 +29,19 @@ handleServiceChange(event){
     const value = event.target.value
     this.setState({vin: value})
     updater(this)
+}
+
+getNumber(props)
+{
+    let count = 0;
+    for(let a of this.state.allServices)
+    {
+        if(a.auto.vin == props)
+        {
+            count += 1;
+        }
+    }
+    return count
 }
 
 async componentDidMount(){
@@ -47,8 +61,10 @@ async componentDidMount(){
         const data = await serviceResponse.json()
         const after = data.appointments.filter((service) => {return service.auto.vin == this.state.vin})
         this.setState({services: after})
+        this.setState({allServices: data.appointments})
 
     }
+
 }
 
     render(){
@@ -71,7 +87,7 @@ async componentDidMount(){
                             {this.state.vins.map(vin => {
                             return(
                                 <option key={vin.vin} value={[vin.vin]}>
-                                    {vin.vin}
+                                    {vin.vin} ({this.getNumber(vin.vin)})
                                 </option>  
                             );
                         })}

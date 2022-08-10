@@ -31,7 +31,7 @@ class ManufacturerList extends React.Component {
         <div className="container">
           <h2>Manufacturers.</h2>
           <div className="row gx-5 gy-3 row-cols-3">
-            <table className="center table border border-5 border-success">
+            <table className="text-center table border border-5 border-success">
                 <thead>
                   <tr>
                     <th>Name</th>

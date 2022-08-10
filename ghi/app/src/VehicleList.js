@@ -6,6 +6,8 @@ class VehicleList extends React.Component {
         super(props)
         this.state = {
             vehicles: [],
+            x : 0,
+            y : 0,
         }
     }
     async componentDidMount(){
@@ -18,9 +20,23 @@ class VehicleList extends React.Component {
         }
     }
 
+    _onMouseMove(e) {
+        this.setState({ x: e.screenX, y: e.screenY });
+      }
+
+    checkPosition(xMax, xMin, yMax, yMin)
+    {
+        if(xMax >= this.state.x && xMin <= this.state.x && yMax >= this.state.y && this.state.y >= yMin)
+        {
+            return(
+                <img src="https://www.supercars.net/blog/wp-content/uploads/2020/09/2020-Ferrari-F8-Tributo.jpg"  className="card-img-top" />
+                )
+        }
+    }
+
     render() {
         return (
-            <>
+            <div onMouseMove={this._onMouseMove.bind(this)}>
             <div className="px-4 py-5 my-5 mt-0 text-center bg-info">
                 <img className="bg-white rounded shadow d-block mx-auto mb-4" src='/logo.svg' alt="" width="600" />
                 <h1 className= "displays-5 fw-bold">Vehicles</h1>
@@ -30,6 +46,10 @@ class VehicleList extends React.Component {
                     </p>
                 </div>
             </div>
+            <div>
+                <h1>Mouse coordinates: { this.state.x } { this.state.y }</h1>
+            </div>
+            {this.checkPosition(2200,1800,450,150)}
             <div className="container">
                 <h2>Vehicles, Vehicles, and more Vehicles</h2>
                 <div className="row gx-5 gy-3 row-cols-3">
@@ -55,7 +75,7 @@ class VehicleList extends React.Component {
                     </table>
                 </div>
             </div>
-            </>
+            </div>
         )
     }
 }
