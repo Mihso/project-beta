@@ -25,6 +25,8 @@ function Nav() {
 
           <NavLink className="navbar-brand" to="keyPress">Key press test</NavLink>
 
+          <NavLink className="navbar-brand" to="game">game test</NavLink>
+
           <li className="navbar-nav dropdown">
             <a className="navbar-brand dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Sales
