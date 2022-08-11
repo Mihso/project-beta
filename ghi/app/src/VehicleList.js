@@ -21,7 +21,7 @@ class VehicleList extends React.Component {
     }
 
     _onMouseMove(e) {
-        this.setState({ x: e.screenX, y: e.screenY });
+        this.setState({ x: e.clientX, y: e.clientY });
       }
 
     checkPosition(xMax, xMin, yMax, yMin)
@@ -49,7 +49,7 @@ class VehicleList extends React.Component {
             <div>
                 <h1>Mouse coordinates: { this.state.x } { this.state.y }</h1>
             </div>
-            {this.checkPosition(2200,1800,450,150)}
+            {this.checkPosition(550,450,200,150)}
             <div className="container">
                 <h2>Vehicles, Vehicles, and more Vehicles</h2>
                 <div className="row gx-5 gy-3 row-cols-3">

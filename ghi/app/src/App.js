@@ -16,6 +16,7 @@ import ServiceHistoryForm from './serviceHistory';
 import VehicleList from './VehicleList';
 import VehicleForm from './VehicleForm';
 import AppointmentList from './appointmentList';
+import Keypress from './keyPress';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="vehicleList" element={<VehicleList/>}/>
           <Route path="vehicleForm" element={<VehicleForm/>}/>
           <Route path="AppointmentList" element={<AppointmentList/>}/>
+          <Route path="keyPress" element={<Keypress/>}/>
         </Routes>
       </div>
     </BrowserRouter>
