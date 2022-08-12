@@ -1,29 +1,29 @@
 import React from 'react'
 
-function columns(state, props)
+function columns(stage, props)
 {
     return (
         <tr className="col">
           {props.map(col => {
-            if(state.x === col[1] && state.y === col[0])
+            if(stage.state.x === col[1] && stage.state.y === col[0])
             {
             return (
               <td>
-                [x]
+                <button type="button" onClick={() => {stage.setState({hit: true})}} style={{width: "35px"}}>[x]</button>
               </td>
             );}
-            else if(state.aiX === col[1] && state.aiY === col[0])
+            else if(stage.state.aiX === col[1] && stage.state.aiY === col[0])
             {
                 return (
                     <td>
-                        [g]
+                    <button type="button" style={{width: "35px"}}>m</button>
                     </td>
                 )
             }
             else{
                 return (
                     <td>
-                      [_]
+                      <button type="button" style={{width: "35px"}}>[ ]</button>
                     </td>
                   );   
             }
@@ -71,6 +71,25 @@ function gridFormation(height, width)
     return full
 }
 
+function hitButton(props)
+{
+    if(props === true)
+    {
+    return(
+        <div>
+            <p>You successfully hit the button</p>
+        </div>
+    )
+    }
+    else{
+        return(
+            <div>
+                <p>You missed</p>
+            </div>
+        )
+    }
+}
+
 class Game extends React.Component {
     constructor(props) {
         super(props)
@@ -80,10 +99,10 @@ class Game extends React.Component {
             y:1,
             grid: [],
             wait: false,
+            hit: false,
             aiX: 9,
             aiY: 9,
         }
-        this.handleKeyPress = this.handleKeyPress.bind(this)
         this.handlePictureChange = this.handlePictureChange.bind(this)
     }
 
@@ -92,7 +111,38 @@ class Game extends React.Component {
         this.setState({picture: value})
     }
 
-      
+    columns(props)
+{
+    return (
+        <tr className="col">
+          {props.map(col => {
+            if(this.state.x === col[1] && this.state.y === col[0])
+            {
+            return (
+              <td>
+                <button type="button" onClick={() => {this.setState({hit: true})}} style={{width: "35px"}}>[x]</button>
+              </td>
+            );}
+            else if(this.state.aiX === col[1] && this.state.aiY === col[0])
+            {
+                return (
+                    <td>
+                    <button type="button" style={{width: "35px"}}>m</button>
+                    </td>
+                )
+            }
+            else{
+                return (
+                    <td>
+                      <button type="button" style={{width: "35px"}}>[ ]</button>
+                    </td>
+                  );   
+            }
+          })}
+        </tr>
+      );
+}
+
     _onMouseMove(e) {
         this.setState({ x: e.clientX, y: e.clientY });
       }
@@ -146,14 +196,14 @@ class Game extends React.Component {
     handlePostion(){
         return(<p>{this.state.y} {this.state.x}</p>)
     }
-    handleGridChange(event){
-        const value = event.target.value
-        this.setState({grid: gridFormation(10,10)})
 
+    handleSubmit(event){
+        event.preventDefault()
     }
 
+
     async componentDidMount(){
-        this.setState({grid: gridFormation(10,10)})
+        this.setState({grid: gridFormation(20,20)})
     }
     
     render () {
@@ -165,13 +215,14 @@ class Game extends React.Component {
                             <label htmlFor="pictureUrl">Picture</label>
                             <input onKeyDown={(e) => this.handleKeyPress(e)} placeholder="Movement" required type="text" name = "move" id="move" className="form-control" />
                         </div>
+                        {hitButton}
                         <table>
                             <tbody>
                             {
                             this.state.grid.map(row => {
                                 return(
                                     <>
-                                        {columns(this.state, row)}
+                                        {this.columns(row)}
                                     </>
                                 )
                             })}
